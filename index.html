@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Mateus | Portfólio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/Css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+
+<body class="bg-black text-gray-100 font-sans">
+
+
+    <header class="fixed w-full bg-black/80 backdrop-blur-md z-50 border-b border-gray-800">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-600">João Mateus</a>
+            <ul class="hidden md:flex space-x-8 font-medium">
+                <li><a href="#home" class="hover:text-indigo-600 transition">Início</a></li>
+                <li><a href="#about" class="hover:text-indigo-600 transition">Sobre</a></li>
+                <li><a href="#tech" class="hover:text-indigo-600 transition">Tecnologias</a></li>
+                <li><a href="#projects" class="hover:text-indigo-600 transition">Projetos</a></li>
+                <li><a href="#contact" class="hover:text-indigo-600 transition">Contato</a></li>
+            </ul>
+            <button id="menu-btn" class="md:hidden text-indigo-600 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+    </header>
+
+
+    <section id="home" class="pt-32 pb-20 px-6" data-aos="fade-up">
+        <div class="container mx-auto text-center">
+            <h1 class="text-2xl md:text-8xl font-light tracking-normal text-transparent bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text"
+                style="font-family: 'Space Grotesk', sans-serif;">
+                Front-End & Back-End Developer
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto">
+                Desenvolvedor de Software apaixonado por criar soluções digitais inovadoras e experiências de usuário
+                excepcionais.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#projects"
+                    class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition">Ver
+                    Projetos</a>
+                <a href="#contact"
+                    class="border-2 border-indigo-600 text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-indigo-50 transition">Contato</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- zona de conhecimentos (sobre mim)-->
+    <section id="about" class="py-20 bg-black px-6 border-t border-gray-800">
+        <div class="container mx-auto" data-aos="fade-right">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6">Sobre Mim</h2>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        Com foco em desenvolvimento Full Stack, busco sempre escrever código limpo e eficiente. Tenho
+                        experiência em transformar ideias complexas em aplicações funcionais e intuitivas.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <h3 class="font-bold text-indigo-600">Frontend</h3>
+                            <p class="text-sm">Html5, Css3, JavaScript e TypeScript</p>
+                        </div>
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <h3 class="font-bold text-indigo-600">Frameworks e Bibliotecas</h3>
+                            <p class="text-sm">React</p>
+                        </div>
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <h3 class="font-bold text-indigo-600">Backend</h3>
+                            <p class="text-sm">Python, Node.js</p>
+                        </div>
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <h3 class="font-bold text-indigo-600">Bancos de Dados</h3>
+                            <p class="text-sm">PostgreSQL, MySQL</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div
+                        class="w-64 h-64 bg-gray-800 rounded-2xl rotate-3 overflow-hidden border-4 border-indigo-600 shadow-2xl shadow-indigo-500/20">
+                        <img src="assets/img/EU.jpg" alt="Foto de João Mateus"
+                            class="profile-avatar w-full h-full object-cover -rotate-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- zona de conhecimentos (sobre mim) -->
+    <section id="tech" class="py-20 px-6 border-t border-gray-800">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Frameworks & Tecnologias</h2>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16" data-aos="zoom-in">
+                <div class="tech-item flex flex-col items-center group">
+                    <i
+                        class="fab fa-html5 text-6xl text-gray-600 group-hover:text-blue-400 transition-all duration-300"></i>
+                    <span class="mt-4 text-gray-400 group-hover:text-white transition-colors">HTML5</span>
+                </div>
+                <div class="tech-item flex flex-col items-center group">
+                    <i
+                        class="fab fa-css3-alt text-6xl text-gray-600 group-hover:text-green-500 transition-all duration-300"></i>
+                    <span class="mt-4 text-gray-400 group-hover:text-white transition-colors">CSS</span>
+                </div>
+                <div class="tech-item flex flex-col items-center group">
+                    <i
+                        class="fab fa-js text-6xl text-gray-600 group-hover:text-yellow-300 transition-all duration-300"></i>
+                    <span class="mt-4 text-gray-400 group-hover:text-white transition-colors">JavaScript</span>
+                </div>
+                <div class="tech-item flex flex-col items-center group">
+                    <i
+                        class="fab fa-python text-6xl text-gray-600 group-hover:text-yellow-400 transition-all duration-300"></i>
+                    <span class="mt-4 text-gray-400 group-hover:text-white transition-colors">Python</span>
+                </div>
+                <div class="tech-item flex flex-col items-center group">
+                    <i
+                        class="fab fa-node-js text-6xl text-gray-600 group-hover:text-yellow-300 transition-all duration-300"></i>
+                    <span class="mt-4 text-gray-400 group-hover:text-white transition-colors">Node.js</span>
+                </div>
+                <div class="tech-item flex flex-col items-center group">
+                    <i
+                        class="fab fa-react text-6xl text-gray-600 group-hover:text-blue-400 transition-all duration-300"></i>
+                    <span class="mt-4 text-gray-400 group-hover:text-white transition-colors">React</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Onde fica os projetos -->
+    <section id="projects" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Meus Projetos</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Projeto 1 -->
+                <a href="https://guedessec.github.io/Biblioteca-de-Alexandria/" target="_blank"
+                    class="project-card block bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-indigo-500/10 transition border border-gray-800"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gray-900 flex items-center justify-center p-6">
+                        <img src="assets/img/1.png" alt="Logo GuedesSEC" class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">GuedesSEC</h3>
+                        <p class="text-gray-400 text-sm mb-4">Centro de armazenamento pessoal para ISOs, livros, códigos
+                            e links para jogos.</p>
+                        <div class="flex gap-2">
+                            <span class="text-xs bg-red-900/50 text-red-400 px-2 py-1 rounded">Html5</span>
+                            <span class="text-xs bg-blue-900/50 text-blue-400 px-2 py-1 rounded">Css3</span>
+                            <span class="text-xs bg-yellow-900/50 text-yellow-400 px-2 py-1 rounded">JavaScript</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Projeto 2 -->
+                <a href="#" target="_blank"
+                    class="project-card block bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-indigo-500/10 transition border border-gray-800"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gray-900 flex items-center justify-center p-6">
+                        <img src="imagens/logo-cadastro.png" alt="Logo Cadastro"
+                            class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">nada por enquanto</h3>
+                        <p class="text-gray-400 text-sm mb-4">nada por enquanto</p>
+                        <div class="flex gap-2">
+                            <span class="text-xs bg-blue-900/50 text-blue-400 px-2 py-1 rounded">Html</span>
+                            <span class="text-xs bg-teal-900/50 text-teal-400 px-2 py-1 rounded">Css</span>
+                            <span class="text-xs bg-yellow-900/50 text-yellow-400 px-2 py-1 rounded">JavaScript</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Projeto 3 -->
+                <a href="#" target="_blank"
+                    class="project-card block bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-indigo-500/10 transition border border-gray-800"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 bg-gray-900 flex items-center justify-center p-6">
+                        <img src="imagens/logo-dashboard.png" alt="Logo Dashboard"
+                            class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">nada por enquanto</h3>
+                        <p class="text-gray-400 text-sm mb-4">nada por enquanto</p>
+                        <div class="flex gap-2">
+                            <span class="text-xs bg-yellow-900/50 text-yellow-400 px-2 py-1 rounded">Python</span>
+                            <span class="text-xs bg-red-900/50 text-red-400 px-2 py-1 rounded">D3.js</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- zona de contato -->
+    <section id="contact" class="py-20 bg-black text-white px-6 border-t border-gray-800" data-aos="zoom-in-up">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8">Vamos Conversar?</h2>
+            <p class="mb-10 text-indigo-200">Estou sempre aberto a novos projetos e parcerias.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="mailto:guedessec.root@gmail.com?subject=Contato%20GuedesSEC"
+                    class="text-3xl hover:text-indigo-400 transition"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/GuedesSEC" target="_blank"
+                    class="text-3xl hover:text-indigo-400 transition"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/jo%C3%A3o-mateus-a75145249/" target="_blank"
+                    class="text-3xl hover:text-indigo-400 transition"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-black text-center text-gray-600 text-sm border-t border-gray-800">
+        <p>&copy; 2026 João Mateus. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+
+</html>

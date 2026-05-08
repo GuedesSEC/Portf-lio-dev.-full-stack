@@ -1,0 +1,37 @@
+/* Estilos personalizados */
+
+/* Ajuste para garantir que o scroll pare antes da seção devido ao header fixo */
+section {
+    scroll-margin-top: 8px;
+}
+
+/* Animação suave para o hover nos cards */
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #4f46e5; /* indigo-600 */
+    box-shadow: 0 10px 30px -10px rgba(247, 246, 246, 0.3);
+}
+
+/* Estilo extra para o avatar */
+.profile-avatar {
+    transition: all 0.5s ease;
+}
+.profile-avatar:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+/* Efeito para os itens de tecnologia */
+.tech-item:hover i {
+    transform: scale(1.2);
+}
+
+/* Fonte personalizada para títulos */
+.font-outfit {
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Fonte estilo Rock */
+.font-rock {
+    font-family: 'Metal Mania', system-ui;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
