@@ -1,7 +1,7 @@
 .bg-black { background-color: #000000; }
 .text-gray-100 { color: #f3f4f6; }
 .text-gray-400 { color: #fbfcff; }
-.text-indigo-600 { color: #ffffff; }
+.text-indigo-600 { color: #4f46e5; }
 
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
@@ -74,8 +74,8 @@
 
 .shadow-lg {
     box-shadow:
-        0 10px 15px -3px rgb(62, 63, 62),
-        0 4px 6px -2px rgba(44, 0, 0, 0.041);
+        0 10px 15px -3px rgba(233, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0,0,0,.05);
 }
 
 .shadow-2xl {
