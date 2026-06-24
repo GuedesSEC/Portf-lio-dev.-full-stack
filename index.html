@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>João Mateus | Portfólio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/Css/style.css">
     <script src="js/main.js" defer></script>
 </head>
@@ -56,43 +52,86 @@
 
     <!-- zona de conhecimentos (sobre mim)-->
     <section id="about" class="py-20 bg-black px-6 border-t border-gray-800">
-        <div class="container mx-auto" data-aos="fade-right">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2">
-                    <h2 class="text-3xl font-bold mb-6">Sobre Mim</h2>
-                    <p class="text-gray-400 leading-relaxed mb-6">
-                        Com foco em desenvolvimento Full Stack, busco sempre escrever código limpo e eficiente. Tenho
-                        experiência em transformar ideias complexas em aplicações funcionais e intuitivas.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="p-4 bg-gray-800 rounded-lg">
-                            <h3 class="font-bold text-indigo-600">Frontend</h3>
-                            <p class="text-sm">Html5, Css3 e JavaScript</p>
+    <div class="container mx-auto" data-aos="fade-right">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            
+            <!-- Lado Esquerdo: Terminal de Comando Linux (Substituindo o texto e os cards antigos) -->
+            <div class="w-full md:w-1/2">
+                <div class="w-full bg-[#0d1117] rounded-xl border border-gray-800 shadow-2xl overflow-hidden font-mono text-sm text-gray-300">
+                    <!-- Barra superior do Terminal -->
+                    <div class="bg-[#161b22] px-4 py-3 flex items-center justify-between border-b border-gray-800">
+                        <div class="flex gap-2">
+                            <span class="w-3 h-3 rounded-full bg-[#ff5f56]"></span>
+                            <span class="w-3 h-3 rounded-full bg-[#ffbd2e]"></span>
+                            <span class="w-3 h-3 rounded-full bg-[#27c93f]"></span>
                         </div>
-                        <div class="p-4 bg-gray-800 rounded-lg">
-                            <h3 class="font-bold text-indigo-600">Frameworks e Bibliotecas</h3>
-                            <p class="text-sm">React</p>
-                        </div>
-                        <div class="p-4 bg-gray-800 rounded-lg">
-                            <h3 class="font-bold text-indigo-600">Backend</h3>
-                            <p class="text-sm">Python, Node.js</p>
-                        </div>
-                        <div class="p-4 bg-gray-800 rounded-lg">
-                            <h3 class="font-bold text-indigo-600">Bancos de Dados</h3>
-                            <p class="text-sm">Estudando Ubuntu Server</p>
-                        </div>
+                        <div class="text-xs text-gray-500 select-none">Sobre Mim</div>
+                        <div class="w-12"></div>
                     </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <div
-                        class="w-64 h-64 bg-gray-800 rounded-2xl rotate-3 overflow-hidden border-4 border-indigo-600 shadow-2xl shadow-indigo-500/20">
-                        <img src="assets/img/EU.jpg" alt="Foto de João Mateus"
-                            class="profile-avatar w-full h-full object-cover -rotate-3">
+
+                    <!-- Corpo do Terminal -->
+                    <div class="p-6 space-y-6">
+                        <!-- Comando 1: Quem sou eu -->
+                        <div>
+                            <div class="flex items-center gap-2 text-[#58a6ff]">
+                                <span>#</span>
+                                <span class="text-white font-bold">Name</span>
+                            </div>
+                            <div class="mt-2 pl-4 text-gray-400">
+                                João Mateus – Fullstack Developer
+                            </div>
+                        </div>
+
+                        <!-- Comando 2: Sobre Mim -->
+                        <div>
+                            <div class="flex items-center gap-2 text-[#58a6ff]">
+                                <span>$</span>
+                                <span class="text-white font-bold">cat about.txt</span>
+                            </div>
+                            <div class="mt-2 pl-4 text-gray-400 leading-relaxed">
+                                Com foco em desenvolvimento Full Stack, busco sempre escrever código limpo e eficiente. 
+                                Tenho experiência em transformar ideias complexas em aplicações funcionais e intuitivas.
+                            </div>
+                        </div>
+
+                        <!-- Comando 3: Habilidades -->
+                        <div>
+                            <div class="flex items-center gap-2 text-[#58a6ff]">
+                                <span>$</span>
+                                <span class="text-white font-bold">ls skills/</span>
+                            </div>
+                            <div class="mt-2 pl-4 flex flex-wrap gap-x-4 gap-y-1 text-[#39adb5] font-semibold">
+                                <span>TypeScript</span>
+                                <span>Node.js</span>
+                                <span>Python</span>
+                                <span>Linux</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>React</span>
+                                <span>Ubuntu-Server</span>
+                            </div>
+                        </div>
+
+                        <!-- Cursor Ativo Piscando -->
+                        <div class="flex items-center gap-2 text-[#58a6ff]">
+                            <span>$</span>
+                            <span class="w-2 h-4 bg-gray-400 animate-pulse inline-block"></span>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Lado Direito: Sua Foto (Mantida conforme layout original) -->
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-64 h-64 bg-gray-800 rounded-2xl rotate-3 overflow-hidden border-4 border-indigo-600 shadow-2xl shadow-indigo-500/20">
+                    <img src="assets/img/EU.jpg" alt="Foto de João Mateus"
+                        class="profile-avatar w-full h-full object-cover -rotate-3">
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- zona de conhecimentos (sobre mim) -->
     <section id="tech" class="py-20 px-6 border-t border-gray-800">
@@ -146,22 +185,26 @@
     
 
     <!-- Onde fica os projetos -->
-    <section id="projects" class="py-20 px-6">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Meus Projetos</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-
-                <!-- Projeto 1 -->
+    <section id="projects" class="py-20 px-6 overflow-hidden">
+    <div class="container mx-auto">
+        <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Meus Projetos</h2>
+        
+        <div class="relative w-full max-w-md mx-auto h-[450px] flex items-center justify-center" 
+             style="perspective: 1000px;">
+            
+            <div id="carousel-track" class="relative w-full h-full" style="transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
+                
                 <a href="https://guedessec.github.io/Biblioteca-de-Alexandria/" target="_blank"
-                    class="project-card block bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-indigo-500/10 transition border border-gray-800"
-                    data-aos="fade-up" data-aos-delay="100">
+                    class="carousel-item absolute inset-0 bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-indigo-500/10 transition-all duration-500 border border-gray-800 flex flex-col justify-between"
+                    style="backface-visibility: hidden;">
                     <div class="h-48 bg-gray-900 flex items-center justify-center p-6">
                         <img src="assets/img/1.png" alt="Logo GuedesSEC" class="max-h-full max-w-full object-contain">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">GuedesSEC</h3>
-                        <p class="text-gray-400 text-sm mb-4">Centro de armazenamento pessoal para ISOs, livros, códigos
-                            e links para jogos.</p>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-white">GuedesSEC</h3>
+                            <p class="text-gray-400 text-sm mb-4">Centro de armazenamento pessoal para ISOs, livros, códigos e links para jogos.</p>
+                        </div>
                         <div class="flex gap-2">
                             <span class="text-xs bg-red-900/50 text-red-400 px-2 py-1 rounded">Html5</span>
                             <span class="text-xs bg-blue-900/50 text-blue-400 px-2 py-1 rounded">Css3</span>
@@ -170,42 +213,49 @@
                     </div>
                 </a>
 
-                <!-- Projeto 2 -->
                 <a href="#" target="_blank"
-                    class="project-card block bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-indigo-500/10 transition border border-gray-800"
-                    data-aos="fade-up" data-aos-delay="200">
+                    class="carousel-item absolute inset-0 bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-indigo-500/10 transition-all duration-500 border border-gray-800 flex flex-col justify-between"
+                    style="backface-visibility: hidden;">
                     <div class="h-48 bg-gray-900 flex items-center justify-center p-6">
-                        <img src="#" alt="#"
-                            class="max-h-full max-w-full object-contain">
+                        <img src="#" alt="#" class="max-h-full max-w-full object-contain">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-indigo-400">Em Breve</h3>
-                        <p class="text-gray-400 text-sm mb-4">Projeto em fase de desenvolvimento. Novas soluções vindo por aí!</p>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-indigo-400">Em Breve</h3>
+                            <p class="text-gray-400 text-sm mb-4">Projeto em fase de desenvolvimento. Novas soluções vindo por aí!</p>
+                        </div>
                         <div class="flex gap-2">
                             <span class="text-xs bg-gray-800 text-gray-500 px-2 py-1 rounded animate-pulse">Carregando...</span>
                         </div>
                     </div>
                 </a>
 
-                <!-- Projeto 3 -->
                 <a href="#" target="_blank"
-                    class="project-card block bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-indigo-500/10 transition border border-gray-800"
-                    data-aos="fade-up" data-aos-delay="300">
+                    class="carousel-item absolute inset-0 bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-indigo-500/10 transition-all duration-500 border border-gray-800 flex flex-col justify-between"
+                    style="backface-visibility: hidden;">
                     <div class="h-48 bg-gray-900 flex items-center justify-center p-6">
-                        <img src="#" alt="#"
-                            class="max-h-full max-w-full object-contain">
+                        <img src="#" alt="#" class="max-h-full max-w-full object-contain">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-indigo-400">Em Breve</h3>
-                        <p class="text-gray-400 text-sm mb-4">Trabalhando em algo inovador para integrar ao portfólio.</p>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-indigo-400">Em Breve</h3>
+                            <p class="text-gray-400 text-sm mb-4">Trabalhando em algo inovador para integrar ao portfólio.</p>
+                        </div>
                         <div class="flex gap-2">
                             <span class="text-xs bg-gray-800 text-gray-500 px-2 py-1 rounded animate-pulse">Carregando...</span>
                         </div>
                     </div>
                 </a>
+
             </div>
         </div>
-    </section>
+
+        <div class="flex justify-center gap-4 mt-8">
+            <button id="prev-btn" class="bg-gray-900 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg border border-gray-800 transition">❮</button>
+            <button id="next-btn" class="bg-gray-900 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg border border-gray-800 transition">❯</button>
+        </div>
+    </div>
+</section>
 
     <!-- zona de contato -->
     <section id="contact" class="py-20 bg-black text-white px-6 border-t border-gray-800" data-aos="zoom-in-up">
