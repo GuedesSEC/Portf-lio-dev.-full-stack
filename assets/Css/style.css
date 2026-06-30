@@ -1,6 +1,14 @@
 /* =========================
    RESET
 ========================= */
+section {
+    padding: 80px 0;
+    border-top: 1px solid #2a2a2a;
+}
+
+section:first-of-type {
+    border-top: none;
+}
 * {
     margin: 0;
     padding: 0;
@@ -176,7 +184,7 @@ nav a:hover {
 
 .terminal-body {
     padding: 20px;
-    color: #c9d1d9;
+    color: #000000;
 }
 
 .label {
@@ -251,13 +259,14 @@ nav a:hover {
 /* =========================
    CAROUSEL (CORRIGIDO FINAL)
 ========================= */
+
 #projects {
     perspective: 400px;
 }
 h2 {
     text-align: center;
     margin-bottom: 300px;
-    color
+    color : #4f46e5;
 }
 
 .carousel {
