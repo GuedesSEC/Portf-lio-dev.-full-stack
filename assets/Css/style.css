@@ -373,6 +373,13 @@ h2 {
     background: #4f46e5;
 }
 
+footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #222;
+    margin-top: 50px;
+    color: #888;
+}
 /* =========================
    RESPONSIVO
 ========================= */
@@ -403,4 +410,5 @@ h2 {
         width: 90%;
         height: auto;
     }
+    
 }
