@@ -33,20 +33,48 @@
     .about-grid {
         flex-direction: column;
         gap: 24px;
+        align-items: stretch;
     }
 
-    .terminal,
-    .profile img {
+    .terminal {
         width: 100%;
-        height: center;
-        
+        max-width: 100%;
+        padding: 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(15,15,19,0.95);
     }
 
-    .profile {
-    padding: 10px;
-    background: #000000;
-    
-}
+    .terminal-top {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .terminal-title {
+        margin-left: auto;
+    }
+
+    .terminal-body {
+        padding: 16px 0 0;
+        color: #f1f1f1;
+    }
+
+    .about .profile {
+        padding: 0;
+        background: transparent;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    .about .profile img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+        border-radius: 20px;
+        border: none;
+    }
     .tech-frameworks--ecnologias {
         font-size: 16px;
     }

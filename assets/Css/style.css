@@ -146,6 +146,21 @@ nav a:hover {
     flex-wrap: wrap;
 }
 
+.about .profile {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.about .profile img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+    border: none;
+}
+
 .terminal {
     background: #0d1117;
     border: 1px solid #222;
@@ -320,10 +335,11 @@ nav a:hover {
 
 .card img {
     width: 100%;
-    height: 230px;
+    height: 200px;
     object-fit: cover;
     border-radius: 12px;
 }
+
 
 .card h3 {
     color: #ffffff;
