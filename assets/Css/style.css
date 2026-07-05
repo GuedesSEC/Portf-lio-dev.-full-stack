@@ -313,24 +313,22 @@ nav a:hover {
     width: 300px;
     height: 380px;
     transform: translate(-50%, -50%) scale(0.7);
-    opacity: 0;
     filter: blur(6px);
-    background: linear-gradient(145deg, #121212, #1a1a1a);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 16px;
+    border-radius: 10px;
+    padding: 50px;
     color: white;
     text-decoration: none;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
     transition: transform 0.7s ease, opacity 0.7s ease, filter 0.7s ease, box-shadow 0.7s ease;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 7px;
     overflow: hidden;
+    text-align: center;
 }
 
 .card:hover {
-    box-shadow: 0 24px 60px rgba(79, 70, 229, 0.28);
+    box-shadow: 0 24px 60px rgb(31, 30, 30)
 }
 
 .card img {
@@ -378,30 +376,8 @@ nav a:hover {
     z-index: 0;
 }
 
-/* CONTROLES */
-.controls {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.controls button {
-    background: #111;
-    border: 1px solid #222;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.controls button:hover {
-    background: #4f46e5;
-}
-
 /* =========================
-   CONTACT
+   CONTATO
 ========================= */
 .contact {
     padding-bottom: 80px;
