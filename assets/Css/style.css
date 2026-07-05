@@ -39,7 +39,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0,0,0,0.85);
+    background: rgba(136, 131, 131, 0.062);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid #222;
     z-index: 1000;
@@ -59,7 +59,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #6366f1;
+    color: #ffffff;
 }
 
 .nav-links {
@@ -103,6 +103,7 @@ nav a:hover {
     margin: 0 auto 30px;
 }
 
+
 /* =========================
    BUTTONS
 ========================= */
@@ -140,7 +141,6 @@ nav a:hover {
 ========================= */
 .about-grid {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     gap: 50px;
     flex-wrap: wrap;
@@ -199,7 +199,7 @@ nav a:hover {
 }
 
 .skills p {
-    color: #39adb5;
+    color: #ffffff;
     margin: 5px 0;
 }
 
@@ -207,7 +207,7 @@ nav a:hover {
     display: inline-block;
     width: 8px;
     height: 18px;
-    background: #999;
+    background: #ffffff;
     animation: blink 1s infinite;
 }
 
@@ -216,15 +216,15 @@ nav a:hover {
 }
 
 /* =========================
-   PROFILE (CORRIGIDO)
+   FOTO DE PERFIL
 ========================= */
 .profile img {
-    width: 260px;
-    height: 260px;
+    width: 500px;
+    height: 500px;
     object-fit: cover;
-    border-radius: 20px;
-    border: 3px solid #4f46e5;
-    box-shadow: 0 10px 40px rgba(79,70,229,0.25);
+    border-radius: 2000px;
+    border: 10px solid #00000065;
+    box-shadow: 100px 40px rgb(0, 0, 0);
 }
 
 /* =========================
@@ -234,8 +234,17 @@ nav a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
     gap: 30px;
-    margin-top: 50px;
+    margin-top: 75px;
     text-align: center;
+}
+.tech h2{
+    text-align: center;          /* Centraliza */
+    font-size: 40px;             /* Tamanho */
+    font-weight: 700;            /* Negrito */
+    font-family: 'Poppins', sans-serif; /* Fonte */
+    color: #00d8ff;              /* Cor */
+    margin-bottom: 50px;         /* Espaço abaixo */
+    letter-spacing: 1px;         /* Espaçamento entre letras */
 }
 
 .tech-item {
@@ -257,97 +266,105 @@ nav a:hover {
 }
 
 /* =========================
-   CAROUSEL (CORRIGIDO FINAL)
+   CAROUSEL COVERFLOW
 ========================= */
 
 #projects {
-    perspective: 400px;
+    perspective: 1200px;
 }
-h2 {
+
+#projects h2 {
     text-align: center;
-    margin-bottom: 300px;
-    color : #4f46e5;
+    margin-bottom: 40px;
+    color: #ffffff;
 }
 
 .carousel {
     position: relative;
     width: 100%;
-    height: 120px;
+    height: 460px;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: visible;
 }
 
 .carousel-track {
     position: relative;
-    width: 50%;
-    height: 100%;
+    width: min(760px, 100%);
+    height: 420px;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
-/* CARD BASE */
 .card {
     position: absolute;
-    top: 10%;
+    top: 50%;
     left: 50%;
-
-    width: 360px;
-    height: 440px;
-
+    width: 300px;
+    height: 380px;
     transform: translate(-50%, -50%) scale(0.7);
     opacity: 0;
-    filter: blur(4px);
-
-    background: #111111;
-    border: 1px solid #222;
-    border-radius: 14px;
-
-    padding: 15px;
+    filter: blur(6px);
+    background: linear-gradient(145deg, #121212, #1a1a1a);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 16px;
     color: white;
     text-decoration: none;
-
-    transition: all 0.7s ease;
-
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    transition: transform 0.7s ease, opacity 0.7s ease, filter 0.7s ease, box-shadow 0.7s ease;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    overflow: hidden;
 }
 
-/* IMAGEM NÃO ESTOURA */
+.card:hover {
+    box-shadow: 0 24px 60px rgba(79, 70, 229, 0.28);
+}
+
 .card img {
     width: 100%;
-    height: 400px;
+    height: 230px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
-/* ATIVO */
+.card h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.card p {
+    color: #c7c7c7;
+    font-size: 0.95rem;
+}
+
 .card.active {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1) rotateY(0deg);
     opacity: 1;
     filter: blur(0);
     z-index: 5;
 }
 
-/* PRÓXIMO */
 .card.next {
-    transform: translate(calc(-50% + 260px), -50%) scale(0.85) rotateY(-25deg);
-    opacity: 0.6;
+    transform: translate(calc(-50% + 220px), -50%) scale(0.85) rotateY(-32deg);
+    opacity: 0.8;
     filter: blur(1px);
     z-index: 3;
 }
 
-/* ANTERIOR */
 .card.prev {
-    transform: translate(calc(-50% - 260px), -50%) scale(0.85) rotateY(25deg);
-    opacity: 0.6;
+    transform: translate(calc(-50% - 220px), -50%) scale(0.85) rotateY(32deg);
+    opacity: 0.8;
     filter: blur(1px);
     z-index: 3;
 }
 
-/* OCULTOS */
 .card.hidden {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5);
+    transform: translate(-50%, -50%) scale(0.45);
     z-index: 0;
 }
 
@@ -371,6 +388,58 @@ h2 {
 
 .controls button:hover {
     background: #4f46e5;
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact {
+    padding-bottom: 80px;
+}
+
+.contact .container {
+    background: linear-gradient(135deg, rgba(79,70,229,0.18), rgba(255,255,255,0.04));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 40px 24px;
+    box-shadow: 0 16px 45px rgba(0,0,0,0.25);
+}
+
+.contact h2 {
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.contact .subtitle {
+    margin-bottom: 24px;
+    color: #c7c7c7;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+.socials a:hover {
+    background: #4f46e5;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(79,70,229,0.35);
 }
 
 footer {

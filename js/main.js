@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     const items = document.querySelectorAll(".card");
     const nextBtn = document.getElementById("next-btn");
     const prevBtn = document.getElementById("prev-btn");
+    const track = document.getElementById("carousel-track");
 
     let index = 0;
     const total = items.length;
+    let startX = 0;
+    let dragging = false;
 
     function render() {
         items.forEach((item, i) => {
@@ -14,30 +16,59 @@ document.addEventListener("DOMContentLoaded", () => {
             if (i === index) {
                 item.classList.add("active");
             }
-
             else if (i === (index + 1) % total) {
                 item.classList.add("next");
             }
-
             else if (i === (index - 1 + total) % total) {
                 item.classList.add("prev");
             }
-
             else {
                 item.classList.add("hidden");
             }
         });
     }
 
-    nextBtn?.addEventListener("click", () => {
+    function goNext() {
         index = (index + 1) % total;
         render();
-    });
+    }
 
-    prevBtn?.addEventListener("click", () => {
+    function goPrev() {
         index = (index - 1 + total) % total;
         render();
+    }
+
+    nextBtn?.addEventListener("click", goNext);
+    prevBtn?.addEventListener("click", goPrev);
+
+    track?.addEventListener("pointerdown", (e) => {
+        dragging = true;
+        startX = e.clientX;
+        track.classList.add("dragging");
     });
+
+    track?.addEventListener("pointermove", (e) => {
+        if (!dragging) return;
+        const delta = e.clientX - startX;
+        track.style.setProperty("--drag-offset", `${delta}px`);
+    });
+
+    const endDrag = (e) => {
+        if (!dragging) return;
+        const delta = e.clientX - startX;
+        if (delta < -60) {
+            goNext();
+        } else if (delta > 60) {
+            goPrev();
+        }
+        track.style.removeProperty("--drag-offset");
+        track.classList.remove("dragging");
+        dragging = false;
+    };
+
+    track?.addEventListener("pointerup", endDrag);
+    track?.addEventListener("pointerleave", endDrag);
+    track?.addEventListener("pointercancel", endDrag);
 
     render();
 });
