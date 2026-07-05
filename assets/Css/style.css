@@ -1,6 +1,29 @@
 /* =========================
    RESET
 ========================= */
+.video-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.video-background video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-background::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.65); /* escurece o vídeo */
+    z-index: 1;
+}
 section {
     padding: 80px 0;
     border-top: 1px solid #2a2a2a;
