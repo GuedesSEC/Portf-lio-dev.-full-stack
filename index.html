@@ -5,23 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>João Mateus | Portfólio</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/Css/style.css">
     <link rel="stylesheet" href="assets/Css/mobile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="js/main.js" defer></script>
 </head>
 
+<!-- VIDEO DE FUNDO-->
+
 <body class="body">
     <div class="video-background">
-    <video autoplay muted loop playsinline>
-        <source src="assets/img/12.mp4" type="video/mp4">
-    </video>
-</div>
+        <video autoplay muted loop playsinline>
+            <source src="assets/img/12.mp4" type="video/mp4">
+        </video>
+    </div>
 
     <header class="header">
         <nav class="nav container">
-            <a href="#" class="logo">João Mateus</a>
+            <a class="logo">João Mateus</a>
 
             <ul class="nav-links">
                 <li><a href="#home">Início</a></li>
@@ -38,12 +42,10 @@
             <h1 class="title">
                 Front-End & Back-End Developer
             </h1>
-
             <p class="subtitle">
                 Desenvolvedor de Software apaixonado por criar soluções digitais inovadoras e experiências de usuário
                 excepcionais.
             </p>
-
             <div class="buttons">
                 <a href="#projects" class="btn primary">Ver Projetos</a>
                 <a href="#contact" class="btn outline">Contato</a>
@@ -51,9 +53,10 @@
         </div>
     </section>
 
+    <!-- SOBRE MIM -->
+
     <section id="about" class="about section">
         <div class="container about-grid">
-
             <div class="terminal">
                 <div class="terminal-top">
                     <div class="dots">
@@ -63,47 +66,39 @@
                     </div>
                     <span class="terminal-title">Sobre Mim</span>
                 </div>
-
                 <div class="terminal-body">
-
                     <div>
-                        <div class="label">&lt;/&gt;Nome</div>
+                        <div class="label">&lt;/&gt; Nome</div>
                         <div class="value">joaomateus <span>(fullstack-developer)</span></div>
                     </div>
-
                     <div>
-                        <div class="label">&lt;/&gt;LEIA-ME</div>
+                        <div class="label">&lt;/&gt; LEIA-ME</div>
                         <div class="value">
                             Com foco em desenvolvimento Full Stack, busco sempre escrever código limpo e eficiente.
                         </div>
                     </div>
-
                     <div>
                         <div class="label">&lt;/&gt; Habilidades</div>
-
                         <div class="Habilidades">
-                            <p>HTML5 CSS3 JavaScript React</p>
-                            <p>Node.js Python</p>
-                            <p>Git GitHub</p>
-                            <p>Linux Windows</p>
+                            <p>HTML5 | CSS3 | JavaScript | React</p>
+                            <p>Node.js | Python</p>
+                            <p>Git | GitHub</p>
+                            <p>Linux | Windows<span class="cursor"></span></p>
                         </div>
                     </div>
-
-                    <div class="cursor">...</div>
-
                 </div>
             </div>
-
             <div class="profile">
                 <img src="assets/img/eu.jpg" alt="Foto de João Mateus">
             </div>
-
         </div>
     </section>
 
+    <!-- TECNOLOGIAS -->
+
     <section id="tech" class="tech section">
         <div class="container">
-            <h2>Frameworks & Tecnologias</h2>
+            <h2>Tecnologias</h2>
 
             <div class="tech-grid">
                 <div class="tech-item"><i class="fab fa-html5"></i><span>HTML5</span></div>
@@ -114,47 +109,78 @@
                 <div class="tech-item"><i class="fab fa-react"></i><span>React</span></div>
                 <div class="tech-item"><i class="fab fa-github"></i><span>GitHub</span></div>
                 <div class="tech-item"><i class="fab fa-git"></i><span>Git</span></div>
+                <div class="tech-item"><i class="fab fa-linux"></i><span>Linux</span></div>
+                <div class="tech-item"><i class="fab fa-java"></i><span>Java</span></div>
             </div>
         </div>
     </section>
 
+    <!-- PROJETOS -->
+
     <section id="projects" class="projects section">
         <div class="container">
-            <h2>O que faço?</h2>
-
+            <h2>Meus projetos</h2>
             <div class="carousel">
                 <div class="carousel-track" id="carousel-track">
 
                     <a href="https://guedessec.github.io/Biblioteca-de-Alexandria/" class="card active">
                         <img src="assets/img/1.png" alt="Projeto 1">
-                        <h3>GuedesSEC</h3>
-                        <p>Biblioteca de Alexandria</p>
+                        <h3>Biblioteca de Alexandria</h3>
+                        <p>Este é o seu centro de armazenamento pessoal.</p>
+                        <div class="project-links">
+                            <span onclick="window.open('https://github.com/GuedesSEC/Biblioteca-de-Alexandria', '_blank')">💻 Código </span>
+                            <span onclick="window.open('https://guedessec.github.io/Biblioteca-de-Alexandria/', '_blank')">🌐 Produção</span>
+                        </div>
                     </a>
 
-                    <a class="card">
-                        <h3>Em Breve</h3>
-                        <p>Projeto em desenvolvimento</p>
+
+                    <a href="https://guedessec.github.io/Biblioteca-de-Alexandria/" class="card active">
+                        <img src="assets/img/1.png" alt="Projeto 1">
+                        <h3>Biblioteca de Alexandria</h3>
+                        <p>Este é o seu centro de armazenamento pessoal.</p>
+                        <div class="project-links">
+                            <span onclick="window.open('https://github.com/GuedesSEC/Biblioteca-de-Alexandria', '_blank')">💻 Código Fonte </span>
+                            <span onclick="window.open('https://guedessec.github.io/Biblioteca-de-Alexandria/', '_blank')">🌐 Produção</span>
+                        </div>
                     </a>
 
-                    <a class="card">
-                        <h3>Em Breve</h3>
-                        <p>Projeto em desenvolvimento</p>
+
+                    <a href="https://guedessec.github.io/Biblioteca-de-Alexandria/" class="card active">
+                        <img src="assets/img/1.png" alt="Projeto 1">
+                        <h3>Biblioteca de Alexandria</h3>
+                        <p>Este é o seu centro de armazenamento pessoal.</p>
+                        <div class="project-links">
+                            <span onclick="window.open('https://github.com/GuedesSEC/Biblioteca-de-Alexandria', '_blank')">💻 Código Fonte </span>
+                            <span onclick="window.open('https://guedessec.github.io/Biblioteca-de-Alexandria/', '_blank')">🌐 Produção</span>
+                        </div>
                     </a>
 
-                    <a class="card">
-                        <h3>Em Breve</h3>
-                        <p>Projeto em desenvolvimento</p>
-                    </a>
 
-                    <a class="card">
-                        <h3>Em Breve</h3>
-                        <p>Projeto em desenvolvimento</p>
+                    <a href="https://guedessec.github.io/Biblioteca-de-Alexandria/" class="card active">
+                        <img src="assets/img/1.png" alt="Projeto 1">
+                        <h3>Biblioteca de Alexandria</h3>
+                        <p>Este é o seu centro de armazenamento pessoal.</p>
+                        <div class="project-links">
+                            <span onclick="window.open('https://github.com/GuedesSEC/Biblioteca-de-Alexandria', '_blank')">💻 Código Fonte </span>
+                            <span onclick="window.open('https://guedessec.github.io/Biblioteca-de-Alexandria/', '_blank')">🌐 Produção</span>
+                        </div>
+                    </a>
+                    <a href="https://guedessec.github.io/Biblioteca-de-Alexandria/" class="card active">
+                        <img src="assets/img/1.png" alt="Projeto 1">
+                        <h3>Biblioteca de Alexandria</h3>
+                        <p>Este é o seu centro de armazenamento pessoal.</p>
+                        <div class="project-links">
+                            <span onclick="window.open('https://github.com/GuedesSEC/Biblioteca-de-Alexandria', '_blank')">💻 Código Fonte </span>
+                            <span onclick="window.open('https://guedessec.github.io/Biblioteca-de-Alexandria/', '_blank')">🌐 Produção</span>
+                        </div>
                     </a>
 
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- CONTATOS -->
 
     <section id="contact" class="contact section">
         <div class="container text-center">
@@ -170,7 +196,8 @@
                             <div class="brand-meta">1.333+ seguidores</div>
                         </div>
                     </div>
-                    <a class="icon" href="https://www.instagram.com/guedessec/" target="_blank" rel="noreferrer" aria-label="Instagram">
+                    <a class="icon" href="https://www.instagram.com/mathew_m8/" target="_blank" rel="noreferrer"
+                        aria-label="Instagram">
                         <div class="layer">
                             <span></span>
                             <span></span>
@@ -192,7 +219,8 @@
                             <div class="brand-meta">Veja meus repositórios</div>
                         </div>
                     </div>
-                    <a class="icon" href="https://github.com/GuedesSEC" target="_blank" rel="noreferrer" aria-label="GitHub">
+                    <a class="icon" href="https://github.com/GuedesSEC" target="_blank" rel="noreferrer"
+                        aria-label="GitHub">
                         <div class="layer">
                             <span></span>
                             <span></span>
@@ -214,7 +242,8 @@
                             <div class="brand-meta">Conecte-se comigo</div>
                         </div>
                     </div>
-                    <a class="icon" href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                    <a class="icon" href="https://www.linkedin.com/in/jo%C3%A3o-mateus-a75145249/" target="_blank"
+                        rel="noreferrer" aria-label="LinkedIn">
                         <div class="layer">
                             <span></span>
                             <span></span>
@@ -236,7 +265,8 @@
                             <div class="brand-meta">Fale comigo direto</div>
                         </div>
                     </div>
-                    <a class="icon" href="https://wa.me/5519971026797" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+                    <a class="icon" href="https://wa.me/5519971026797" target="_blank" rel="noreferrer"
+                        aria-label="WhatsApp">
                         <div class="layer">
                             <span></span>
                             <span></span>
@@ -252,11 +282,13 @@
         </div>
     </section>
 
+    <!--FIM DO PROJETO>
+
     <footer class="footer">
         <p>© 2026 João Mateus</p>
     </footer>
 
 </body>
 
-</html>
 
+</html>

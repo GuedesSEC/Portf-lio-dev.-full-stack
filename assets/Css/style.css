@@ -1,5 +1,5 @@
 /* =========================
-   RESET
+    VIDEO BACKGROUND
 ========================= */
 .video-background{
     position: fixed;
@@ -46,7 +46,7 @@ body {
 }
 
 /* =========================
-   CONTAINER
+    CONTAINER
 ========================= */
 .container {
     max-width: 1200px;
@@ -55,7 +55,7 @@ body {
 }
 
 /* =========================
-   HEADER
+    CABEÇALHO
 ========================= */
 header {
     position: fixed;
@@ -160,7 +160,7 @@ nav a:hover {
 }
 
 /* =========================
-   ABOUT
+  sobre mim + terminal
 ========================= */
 .about-grid {
     display: flex;
@@ -171,8 +171,8 @@ nav a:hover {
 
 .about .profile {
     width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
+    max-width: 300px;
+    margin: 10px auto;
 }
 
 .about .profile img {
@@ -180,7 +180,7 @@ nav a:hover {
     height: auto;
     object-fit: cover;
     display: block;
-    border-radius: 20px;
+    border-radius: 200px;
     border: none;
 }
 
@@ -222,7 +222,7 @@ nav a:hover {
 
 .terminal-body {
     padding: 20px;
-    color: #000000;
+    color: #00ff6a;
 }
 
 .label {
@@ -232,19 +232,15 @@ nav a:hover {
 }
 
 .value {
-    color: #aaa;
-    margin-left: 10px;
-}
-
-.skills p {
-    color: #ffffff;
-    margin: 5px 0;
+    color: #ff0000;
+    margin-left: 1px;
 }
 
 .cursor {
     display: inline-block;
-    width: 8px;
-    height: 18px;
+    width: 1px;
+    height: 15px;
+    margin-left: 2px;
     background: #ffffff;
     animation: blink 1s infinite;
 }
@@ -253,28 +249,22 @@ nav a:hover {
     50% { opacity: 0; }
 }
 
-/* =========================
-   FOTO DE PERFIL
-========================= */
-
-
 
 /* =========================
-   TECH GRID
+   grades dos frameworks
 ========================= */
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
-    gap: 30px;
-    margin-top: 75px;
-    text-align: center;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    gap: 40px;
 }
 .tech h2{
     text-align: center;         
-    font-size: 40px;             
+    font-size: 50px;             
     font-weight: 700;            
     font-family: 'Poppins', sans-serif; 
-    color: #00d8ff;           
+    color: #ffffff;           
     margin-bottom: 50px;         
     letter-spacing: 1px;         
 }
@@ -285,15 +275,83 @@ nav a:hover {
     align-items: center;
     gap: 10px;
 }
+.tech-item {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.tech-item i {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+/*CORES E FEITOS DOS FRAMEWORKS*/
+
+.tech-item:hover i {
+    transform: scale(1.2);
+}
+
+/* HTML */
+.tech-item:nth-child(1):hover i {
+    color: #E34F26;
+}
+
+/* CSS */
+.tech-item:nth-child(2):hover i {
+    color: #1572B6;
+}
+
+/* JavaScript */
+.tech-item:nth-child(3):hover i {
+    color: #F7DF1E;
+}
+
+/* Python */
+.tech-item:nth-child(4):hover i {
+    background: linear-gradient(to bottom, #3776AB 50%, #FFD43B 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Node.js */
+.tech-item:nth-child(5):hover i {
+    color: #5FA04E;
+}
+
+/* React */
+.tech-item:nth-child(6):hover i {
+    color: #61DAFB;
+}
+
+/* GitHub */
+.tech-item:nth-child(7):hover i {
+    color: #ffffff;
+}
+
+/* Git */
+.tech-item:nth-child(8):hover i {
+    color: #F05032;
+}
+
+/* Linux */
+.tech-item:nth-child(9):hover i {
+    color: #000000;
+}
+
+/* Java */
+.tech-item:nth-child(10):hover i {
+ background: linear-gradient(to bottom, #3776AB 50%, #ff0000 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;}
 
 .tech-item i {
     font-size: 100px;
-    color: #777;
+    color: #2e2d2d;
     transition: 0.3s;
 }
 
 .tech-item:hover i {
-    color: #ffffff;
+    color: #000000;
     transform: scale(1.2);
 }
 
@@ -306,9 +364,12 @@ nav a:hover {
 }
 
 #projects h2 {
+   font-family: 'Outfit', sans-serif;
     text-align: center;
-    margin-bottom: 40px;
+    font-size: 50px;
+    margin-bottom: 100px;
     color: #ffffff;
+    
 }
 
 .carousel {
@@ -339,7 +400,7 @@ nav a:hover {
     filter: blur(6px);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 10px;
-    padding: 50px;
+    padding: 30px;
     color: white;
     text-decoration: none;
     transition: transform 0.7s ease, opacity 0.7s ease, filter 0.7s ease, box-shadow 0.7s ease;
@@ -358,6 +419,7 @@ nav a:hover {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    flex-shrink: 0;
     border-radius: 12px;
 }
 
@@ -365,11 +427,13 @@ nav a:hover {
 .card h3 {
     color: #ffffff;
     font-size: 1.2rem;
+    min-height: 50px;
 }
 
 .card p {
     color: #c7c7c7;
     font-size: 0.95rem;
+    min-height: 25px;
 }
 
 .card.active {
@@ -397,6 +461,27 @@ nav a:hover {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.45);
     z-index: 0;
+}
+.project-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.project-links span {
+    background: #474747;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.project-links span:hover {
+    background: #0099ff;
+    
 }
 
 /* =========================
@@ -833,6 +918,5 @@ footer {
   color: #ccc;
   padding-top: 5px;
 }
-
-    
+ 
 }
