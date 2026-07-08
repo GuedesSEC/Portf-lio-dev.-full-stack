@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/Css/style.css">
     <link rel="stylesheet" href="assets/Css/mobile.css">
+    <script src="assets/JavaScript/mobile.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="js/main.js" defer></script>
 </head>
@@ -25,15 +26,96 @@
 
     <header class="header">
         <nav class="nav container">
-            <a class="logo">João Mateus</a>
+            <a href="#" class="logo">
+                <div class="my-loader">
+                    <div class="rubiks-cube">
+                        <div class="face front">
+                            <div style="background: #ff3d00;" class="cube"></div>
+                            <div style="background: #ffeb3b;" class="cube"></div>
+                            <div style="background: #4caf50;" class="cube"></div>
+                            <div style="background: #2196f3;" class="cube"></div>
+                            <div style="background: #ffffff;" class="cube"></div>
+                            <div style="background: #ffeb3b;" class="cube"></div>
+                            <div style="background: #4caf50;" class="cube"></div>
+                            <div style="background: #2196f3;" class="cube"></div>
+                            <div style="background: #ff3d00;" class="cube"></div>
+                        </div>
 
-            <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#tech">Tecnologias</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
+                        <div class="face back">
+                            <div style="background: #4caf50;" class="cube"></div>
+                            <div style="background: #ff3d00;" class="cube"></div>
+                            <div style="background: #ffeb3b;" class="cube"></div>
+                            <div style="background: #2196f3;" class="cube"></div>
+                            <div style="background: #ffffff;" class="cube"></div>
+                            <div style="background: #ff3d00;" class="cube"></div>
+                            <div style="background: #ffeb3b;" class="cube"></div>
+                            <div style="background: #4caf50;" class="cube"></div>
+                            <div style="background: #2196f3;" class="cube"></div>
+                        </div>
+                        <div class="face left">
+                            <div style="background: #ffeb3b;" class="cube"></div>
+                            <div style="background: #4caf50;" class="cube"></div>
+                            <div style="background: #2196f3;" class="cube"></div>
+                            <div style="background: #ff3d00;" class="cube"></div>
+                            <div style="background: #ffffff;" class="cube"></div>
+                            <div style="background: #4caf50;" class="cube"></div>
+                            <div style="background: #2196f3;" class="cube"></div>
+                            <div style="background: #ffeb3b;" class="cube"></div>
+                            <div style="background: #ff3d00;" class="cube"></div>
+                        </div>
+                        <div class="face right">
+                            <div style="background: #4caf50;" class="cube"></div>
+                            <div style="background: #ff3d00;" class="cube"></div>
+                            <div style="background: #ffeb3b;" class="cube"></div>
+                            <div style="background: #2196f3;" class="cube"></div>
+                            <div style="background: #ffffff;" class="cube"></div>
+                            <div style="background: #ff3d00;" class="cube"></div>
+                            <div style="background: #ffeb3b;" class="cube"></div>
+                            <div style="background: #4caf50;" class="cube"></div>
+                            <div style="background: #2196f3;" class="cube"></div>
+                        </div>
+                        <div class="face top">
+                            <div style="background: #2196f3;" class="cube"></div>
+                            <div style="background: #ffeb3b;" class="cube"></div>
+                            <div style="background: #ff3d00;" class="cube"></div>
+                            <div style="background: #4caf50;" class="cube"></div>
+                            <div style="background: #ffffff;" class="cube"></div>
+                            <div style="background: #ffeb3b;" class="cube"></div>
+                            <div style="background: #ff3d00;" class="cube"></div>
+                            <div style="background: #4caf50;" class="cube"></div>
+                            <div style="background: #2196f3;" class="cube"></div>
+                        </div>
+                        <div class="face bottom">
+                            <div style="background: #ffffff;" class="cube"></div>
+                            <div style="background: #4caf50;" class="cube"></div>
+                            <div style="background: #2196f3;" class="cube"></div>
+                            <div style="background: #ff3d00;" class="cube"></div>
+                            <div style="background: #ffeb3b;" class="cube"></div>
+                            <div style="background: #4caf50;" class="cube"></div>
+                            <div style="background: #2196f3;" class="cube"></div>
+                            <div style="background: #ffffff;" class="cube"></div>
+                            <div style="background: #ff3d00;" class="cube"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                </div>
+                </div>
+
+                <span>João Mateus</span>
+            </a>
+           <button class="menu-btn" id="menu-btn">
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#tech">Tecnologias</a></li>
+        <li><a href="#projects">Projetos</a></li>
+        <li><a href="#contact">Contato</a></li>
+    </ul>
         </nav>
     </header>
 
@@ -46,10 +128,6 @@
                 Desenvolvedor de Software apaixonado por criar soluções digitais inovadoras e experiências de usuário
                 excepcionais.
             </p>
-            <div class="buttons">
-                <a href="#projects" class="btn primary">Ver Projetos</a>
-                <a href="#contact" class="btn outline">Contato</a>
-            </div>
         </div>
     </section>
 
