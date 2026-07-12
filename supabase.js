@@ -12,11 +12,13 @@ let usuario = null;
 
 
 
+
+
 // ============================
-// CRIAR / PEGAR USUÁRIO
+// CRIAR / PEGAR USUÁRIO ANÔNIMO
 // ============================
 
-async function criarUsuarioAnonimo() {
+async function criarUsuarioAnonimo(){
 
 
     const { data: sessao } =
@@ -24,7 +26,7 @@ async function criarUsuarioAnonimo() {
 
 
 
-    if(sessao.data?.session){
+    if(sessao.data.session){
 
 
         usuario =
@@ -40,6 +42,8 @@ async function criarUsuarioAnonimo() {
         return;
 
     }
+
+
 
 
 
@@ -83,6 +87,7 @@ async function criarUsuarioAnonimo() {
 
 
 
+
 // ============================
 // BUSCAR AVALIAÇÕES
 // ============================
@@ -101,7 +106,7 @@ async function carregarAvaliacoes(){
 
 
         console.error(
-            "Erro ao buscar avaliações:",
+            "Erro ao buscar:",
             error.message
         );
 
@@ -112,15 +117,9 @@ async function carregarAvaliacoes(){
 
 
 
-    console.log(
-        "Dados recebidos:",
-        data
-    );
-
-
-
     let total =
         data.length;
+
 
 
     let soma = 0;
@@ -129,7 +128,9 @@ async function carregarAvaliacoes(){
 
     data.forEach(item=>{
 
+
         soma += Number(item.estrelas);
+
 
     });
 
@@ -181,6 +182,140 @@ async function carregarAvaliacoes(){
 
 
 
+// ============================
+// VERIFICAR SE JÁ VOTOU
+// ============================
+
+async function jaVotou(){
+
+
+    if(!usuario)
+        return false;
+
+
+
+    const { data, error } =
+        await banco
+        .from("avaliacoes")
+        .select("id")
+        .eq(
+            "user_id",
+            usuario.id
+        );
+
+
+
+    if(error){
+
+
+        console.error(
+            "Erro verificando voto:",
+            error.message
+        );
+
+
+        return false;
+
+    }
+
+
+
+    return data.length > 0;
+
+
+}
+
+
+
+
+
+
+
+
+
+// ============================
+// MOSTRAR MENSAGEM
+// ============================
+
+function mostrarMensagem(texto){
+
+
+    const antiga =
+        document.getElementById(
+            "feedback-toast"
+        );
+
+
+
+    if(antiga){
+
+        antiga.remove();
+
+    }
+
+
+
+
+    const mensagem =
+        document.createElement("p");
+
+
+
+    mensagem.id =
+        "feedback-toast";
+
+
+
+    mensagem.textContent =
+        texto;
+
+
+
+    mensagem.style.marginTop =
+        "15px";
+
+
+
+    mensagem.style.color =
+        "#00ff88";
+
+
+
+    mensagem.style.fontWeight =
+        "bold";
+
+
+
+    document
+    .querySelector(".rating")
+    .appendChild(mensagem);
+
+
+
+
+    setTimeout(()=>{
+
+
+        mensagem.remove();
+
+
+    },3000);
+
+
+}
+
+
+
+
+
+
+
+
+
+// ============================
+// INICIALIZAÇÃO
+// ============================
+
 document.addEventListener(
 "DOMContentLoaded",
 async()=>{
@@ -190,13 +325,9 @@ async()=>{
         document.querySelectorAll(".stars i");
 
 
-    const rating =
-        document.querySelector(".rating");
-
-
 
     console.log(
-        "Estrelas encontradas:",
+        "Estrelas:",
         estrelas.length
     );
 
@@ -212,13 +343,13 @@ async()=>{
 
 
 
-
     estrelas.forEach(estrela=>{
 
 
         estrela.addEventListener(
         "click",
         async()=>{
+
 
 
             const nota =
@@ -229,89 +360,22 @@ async()=>{
 
 
             console.log(
-                "Nota clicada:",
+                "Nota escolhida:",
                 nota
             );
 
 
 
 
-            // mensagem
-
-            const antiga =
-                document.getElementById(
-                    "feedback-toast"
-                );
 
 
+            // VERIFICA DUPLICADO
 
-            if(antiga){
-
-                antiga.remove();
-
-            }
+            if(await jaVotou()){
 
 
-
-
-            const mensagem =
-                document.createElement("p");
-
-
-
-            mensagem.id =
-                "feedback-toast";
-
-
-
-            mensagem.textContent =
-                "Obrigado pelo feedback! 🚀";
-
-
-
-            mensagem.style.marginTop =
-                "15px";
-
-
-            mensagem.style.color =
-                "#00ff88";
-
-
-            mensagem.style.fontWeight =
-                "bold";
-
-
-
-            rating.appendChild(
-                mensagem
-            );
-
-
-
-            setTimeout(()=>{
-
-                mensagem.remove();
-
-            },3000);
-
-
-
-
-
-
-
-
-
-            // ============================
-            // VERIFICA USUÁRIO
-            // ============================
-
-
-            if(!usuario){
-
-
-                console.error(
-                    "Usuário não criado"
+                mostrarMensagem(
+                    "Você já avaliou este portfólio 🚀"
                 );
 
 
@@ -325,14 +389,9 @@ async()=>{
 
 
 
-
-
-            // ============================
             // SALVAR
-            // ============================
 
-
-            const { data, error } =
+            const { error } =
                 await banco
                 .from("avaliacoes")
                 .insert({
@@ -341,15 +400,9 @@ async()=>{
 
                     user_id: usuario.id
 
-                })
-                .select();
+                });
 
 
-
-            console.log(
-                "Resposta insert:",
-                data
-            );
 
 
 
@@ -368,13 +421,44 @@ async()=>{
 
 
 
-            console.log(
-                "Avaliação salva com sucesso!"
+
+
+
+            // MOSTRA NA HORA
+
+            mostrarMensagem(
+                "Obrigado pelo feedback! 🚀"
             );
 
 
 
+
+
+
+
+            // BLOQUEIA ESTRELAS
+
+            estrelas.forEach(item=>{
+
+                item.style.pointerEvents =
+                    "none";
+
+
+                item.style.opacity =
+                    "0.5";
+
+            });
+
+
+
+
+
+
+
+            // ATUALIZA CONTADOR
+
             await carregarAvaliacoes();
+
 
 
 
@@ -382,7 +466,6 @@ async()=>{
 
 
     });
-
 
 
 });
