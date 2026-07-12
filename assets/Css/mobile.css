@@ -442,3 +442,114 @@
         margin-bottom: 150px;
     }
 }
+
+/* =========================
+   footer */
+   /* ===========================
+   RESPONSIVIDADE MOBILE
+=========================== */
+
+@media (max-width: 768px) {
+
+    .rating {
+
+        width: 90%;
+
+        max-width: 350px;
+
+        margin: 30px auto;
+
+        padding: 20px;
+
+        border-radius: 15px;
+    }
+
+
+    .rating h3 {
+
+        font-size: 18px;
+
+        margin-bottom: 15px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .stars {
+
+        gap: 8px;
+
+        margin: 15px 0;
+    }
+
+
+    .stars i {
+
+        font-size: 28px;
+    }
+
+
+    .stars i:hover {
+
+        transform: scale(1.1);
+    }
+
+
+    .rating p {
+
+        font-size: 16px;
+
+        margin-top: 10px;
+    }
+
+
+    #average {
+
+        font-size: 22px;
+    }
+
+
+    #votes {
+
+        font-size: 15px;
+    }
+
+}
+
+
+/* Celulares menores */
+
+@media (max-width: 400px) {
+
+    .rating {
+
+        width: 92%;
+
+        padding: 18px;
+    }
+
+
+    .rating h3 {
+
+        font-size: 16px;
+    }
+
+
+    .stars {
+
+        gap: 5px;
+    }
+
+
+    .stars i {
+
+        font-size: 24px;
+    }
+
+
+    .rating p {
+
+        font-size: 14px;
+    }
+
+}
