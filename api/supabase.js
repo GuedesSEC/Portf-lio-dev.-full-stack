@@ -1,124 +1,341 @@
 const SUPABASE_URL = "https://cgkdzchttbnlsmnoitcm.supabase.co";
 const SUPABASE_KEY = "sb_publishable_mSk3yM7TrroFoCx6AC_oVg_6awgO7Jh";
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
 
 document.addEventListener("DOMContentLoaded", () => {
-    const estrelas = document.querySelectorAll(".stars i");
-    const containerRating = document.querySelector(".rating"); // Seleciona o card principal
-    let mediaAtual = 0;
-    let mensagemTimeout; // Controla o tempo da mensagem na tela
 
-    // Função para puxar as notas da nuvem
+    console.log("Sistema de avaliação carregado");
+
+
+    const estrelas = document.querySelectorAll(".stars i");
+    const containerRating = document.querySelector(".rating");
+
+    let mediaAtual = 0;
+    let mensagemTimeout;
+
+
+    console.log("Estrelas encontradas:", estrelas.length);
+
+
+
+    // ===============================
+    // CARREGAR AVALIAÇÕES DO BANCO
+    // ===============================
     async function carregarAvaliacoes() {
+
+
         const { data, error } = await supabase
-            .from("avaliacoes") 
+            .from("avaliacoes")
             .select("estrelas");
 
+
         if (error) {
-            console.error("Erro ao carregar dados:", error.message);
+
+            console.error(
+                "Erro ao carregar avaliações:",
+                error.message
+            );
+
             return;
         }
 
+
+
         const total = data.length;
+
+
         let soma = 0;
-        data.forEach(item => soma += item.estrelas);
 
-        mediaAtual = total ? (soma / total) : 0;
-        const mediaFormatada = mediaAtual.toFixed(1);
 
-        document.getElementById("average").textContent = mediaFormatada;
-        document.getElementById("votes").textContent = total;
+        data.forEach(item => {
 
-        // Pinta as estrelas inicialmente com base na média real do banco
-        atualizarEstrelasVisuais(Math.round(mediaAtual));
-    }
+            soma += item.estrelas;
 
-    // Função auxiliar para mudar a cor das estrelas
-    function atualizarEstrelasVisuais(nota) {
-        estrelas.forEach((star, i) => {
-            if (i < nota) {
-                star.style.color = "#ffc107"; // Amarelo/Dourado para as acesas
-            } else {
-                star.style.color = "#555"; // Cinza para as apagadas
-            }
         });
+
+
+
+        mediaAtual = total ? soma / total : 0;
+
+
+
+        const media = mediaAtual.toFixed(1);
+
+
+
+        const campoMedia = document.getElementById("average");
+        const campoVotos = document.getElementById("votes");
+
+
+
+        if (campoMedia)
+            campoMedia.textContent = media;
+
+
+        if (campoVotos)
+            campoVotos.textContent = total;
+
+
+
+        atualizarEstrelasVisuais(
+            Math.round(mediaAtual)
+        );
+
     }
 
-    // FUNÇÃO PARA MOSTRAR O AGRADECIMENTO NA TELA
+
+
+
+    // ===============================
+    // PINTAR ESTRELAS
+    // ===============================
+    function atualizarEstrelasVisuais(nota) {
+
+
+        estrelas.forEach((star, index) => {
+
+
+            if(index < nota){
+
+                star.style.color = "#ffc107";
+
+            }else{
+
+                star.style.color = "#555";
+
+            }
+
+
+        });
+
+
+    }
+
+
+
+
+
+    // ===============================
+    // MENSAGEM DE FEEDBACK
+    // ===============================
     function mostrarAgradecimento(texto, erro = false) {
-        // Se já tiver uma mensagem na tela, remove ela antes de criar outra
-        const mensagemAntiga = document.getElementById("feedback-toast");
-        if (mensagemAntiga) mensagemAntiga.remove();
+
+
+
+        const antiga =
+            document.getElementById(
+                "feedback-toast"
+            );
+
+
+
+        if(antiga)
+            antiga.remove();
+
+
+
         clearTimeout(mensagemTimeout);
 
-        // Cria o elemento de parágrafo para a mensagem
-        const p = document.createElement("p");
-        p.id = "feedback-toast";
-        p.textContent = texto;
-        
-        // Estilização dinâmica para combinar com seu vidro/neon
-        p.style.marginTop = "15px";
-        p.style.fontSize = "14px";
-        p.style.fontWeight = "bold";
-        p.style.transition = "all 0.3s ease";
-        p.style.color = erro ? "#ff4a4a" : "#00ff88"; // Vermelho se der erro, Verde Neon se der certo
 
-        // Adiciona o texto no final do bloco de avaliação
-        containerRating.appendChild(p);
 
-        // Remove a mensagem da tela após 3 segundos
-        mensagemTimeout = setTimeout(() => {
-            p.style.opacity = "0";
-            setTimeout(() => p.remove(), 300); // Espera o efeito de sumir terminar
-        }, 3000);
+        const mensagem =
+            document.createElement("p");
+
+
+
+        mensagem.id =
+            "feedback-toast";
+
+
+
+        mensagem.textContent =
+            texto;
+
+
+
+        mensagem.style.marginTop =
+            "15px";
+
+        mensagem.style.fontSize =
+            "14px";
+
+        mensagem.style.fontWeight =
+            "bold";
+
+        mensagem.style.color =
+            erro ? "#ff4444" : "#00ff88";
+
+
+
+        containerRating.appendChild(
+            mensagem
+        );
+
+
+
+        mensagemTimeout =
+            setTimeout(() => {
+
+
+                mensagem.style.opacity = "0";
+
+
+                setTimeout(() => {
+
+                    mensagem.remove();
+
+                },300);
+
+
+            },3000);
+
+
     }
 
-    // Inicializa o contador ao abrir a página
-    carregarAvaliacoes();
 
-    // Eventos do mouse e clique nas estrelas
+
+
+
+    // ===============================
+    // CLIQUE NAS ESTRELAS
+    // ===============================
     estrelas.forEach((star, index) => {
-        
-        // Efeito Hover: passa o mouse e elas acendem dinamicamente
-        star.addEventListener("mouseenter", () => {
-            atualizarEstrelasVisuais(index + 1);
-        });
 
-        // Tirar o mouse: volta a exibir a média real gravada no banco
-        star.addEventListener("mouseleave", () => {
-            atualizarEstrelasVisuais(Math.round(mediaAtual));
-        });
 
-        // Clique: Grava o voto na nuvem
-        star.addEventListener("click", async () => {
-            const nota = Number(star.dataset.rating);
-            
-            // Força a pintura visual do clique imediato
-            atualizarEstrelasVisuais(nota);
 
-            const { error } = await supabase
-                .from("avaliacoes")
-                .insert({ estrelas: nota });
+        star.addEventListener(
+            "mouseenter",
+            () => {
 
-            if (error) {
-                console.error("Erro detalhado do Supabase:", error.message);
-                mostrarAgradecimento("Erro ao enviar. Verifique o RLS!", true);
-                carregarAvaliacoes(); 
-                return;
+                atualizarEstrelasVisuais(
+                    index + 1
+                );
+
             }
+        );
 
-            // EXIBE A MENSAGEM DO SEU FEEDBACK DIRETO NA TELA!
-            mostrarAgradecimento("Obrigado pelo seu feedback! 🚀");
-            carregarAvaliacoes(); // Atualiza os números na tela
-        });
+
+
+
+        star.addEventListener(
+            "mouseleave",
+            () => {
+
+                atualizarEstrelasVisuais(
+                    Math.round(mediaAtual)
+                );
+
+            }
+        );
+
+
+
+
+
+        star.addEventListener(
+            "click",
+            async () => {
+
+
+                const nota =
+                    Number(
+                        star.dataset.rating
+                    );
+
+
+
+                console.log(
+                    "Nota escolhida:",
+                    nota
+                );
+
+
+
+                // mostra na hora
+                mostrarAgradecimento(
+                    "Obrigado pelo feedback! 🚀"
+                );
+
+
+
+                atualizarEstrelasVisuais(
+                    nota
+                );
+
+
+
+                const { error } =
+                    await supabase
+                    .from("avaliacoes")
+                    .insert({
+                        estrelas: nota
+                    });
+
+
+
+                if(error){
+
+
+                    console.error(
+                        "Erro Supabase:",
+                        error.message
+                    );
+
+
+                    mostrarAgradecimento(
+                        "Erro ao enviar avaliação!",
+                        true
+                    );
+
+
+                    return;
+
+                }
+
+
+
+                carregarAvaliacoes();
+
+
+            }
+        );
+
+
+
     });
 
-    // ESCUTA EM TEMPO REAL
+
+
+
+    // inicia carregamento
+    carregarAvaliacoes();
+
+
+
+
+    // Atualização em tempo real
     supabase
-      .channel('mudancas-avaliacoes')
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'avaliacoes' }, () => {
-          carregarAvaliacoes();
-      })
-      .subscribe();
+    .channel("mudancas-avaliacoes")
+    .on(
+        "postgres_changes",
+        {
+            event:"INSERT",
+            schema:"public",
+            table:"avaliacoes"
+        },
+        () => {
+
+            carregarAvaliacoes();
+
+        }
+    )
+    .subscribe();
+
+
+
 });
