@@ -470,7 +470,7 @@ nav a:hover {
     height: 380px;
     transform: translate(-50%, -50%) scale(0.7);
     filter: blur(6px);
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 10px;
     padding: 30px;
     color: white;
@@ -483,9 +483,7 @@ nav a:hover {
     text-align: center;
 }
 
-.card:hover {
-    box-shadow: 0 24px 60px rgb(71, 73, 75)
-}
+
 
 .card{
     width: 380px;
@@ -498,7 +496,6 @@ nav a:hover {
     display:flex;
     flex-direction:column;
 }
-
 
 .card img{
     width:100%;
@@ -516,6 +513,7 @@ nav a:hover {
 .card p {
     color: #c7c7c7;
     font-size: 0.95rem;
+    margin-top: -20px;
     min-height: 50px;
 }
 
@@ -548,30 +546,21 @@ nav a:hover {
 .project-links{
     display:flex;
     gap:12px;
-    margin-top:auto;
+    margin-top:-20px;
 }
 
 .project-links span{
-
     flex:1;
-
     display:flex;
     justify-content:center;
     align-items:center;
     gap:8px;
-
     padding:12px;
-
     border-radius:10px;
-
     border:1px solid rgba(255,255,255,.1);
-
     background:#202020;
-
     color:white;
-
     cursor:pointer;
-
     transition:.3s;
 }
 
@@ -592,6 +581,39 @@ nav a:hover {
     font-size:1rem;
 
 }
+/* =========================
+  linguagens dos sistemas
+========================= */
+.project-tech{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: -30px;      /* sobe */
+    margin-bottom: 20px;   /* espaço antes dos botões */
+}
+
+.project-tech i{
+    font-size: 26px;
+}
+
+.project-tech .fa-html5{
+    color:#E34F26;
+}
+
+.project-tech .fa-css3-alt{
+    color:#1572B6;
+}
+
+.project-tech .fa-js{
+    color:#F7DF1E;
+}
+.project-tech .fa-js{
+    color:#F7DF1E;
+}
+.project-tech .fa-python{
+    color:#3776ab;
+}
+
 
 
 /* =========================
