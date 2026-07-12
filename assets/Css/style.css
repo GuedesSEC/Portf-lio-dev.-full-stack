@@ -1024,10 +1024,8 @@ footer {
     text-align: center;
 
     color: #ffffff;
-
     box-shadow: 
         0 0 20px rgba(0, 255, 170, 0.15);
-
     transition: 0.3s ease;
 }
 
@@ -1090,10 +1088,10 @@ footer {
 
 .stars i.active {
 
-    color: #ffd700;
+    color: #ffd900;
 
     text-shadow:
-        0 0 15px #ffd700;
+        0 0 15px #ffd900;
 }
 
 
