@@ -24,10 +24,11 @@ async function criarUsuarioAnonimo() {
 
 
 
-    if (sessao.session) {
+    if(sessao.data?.session){
 
 
-        usuario = sessao.session.user;
+        usuario =
+            sessao.data.session.user;
 
 
         console.log(
@@ -42,7 +43,6 @@ async function criarUsuarioAnonimo() {
 
 
 
-
     const { data, error } =
         await banco.auth.signInAnonymously();
 
@@ -52,7 +52,7 @@ async function criarUsuarioAnonimo() {
 
 
         console.error(
-            "Erro usuário:",
+            "Erro ao criar usuário:",
             error.message
         );
 
@@ -63,7 +63,8 @@ async function criarUsuarioAnonimo() {
 
 
 
-    usuario = data.user;
+    usuario =
+        data.user;
 
 
 
@@ -74,6 +75,7 @@ async function criarUsuarioAnonimo() {
 
 
 }
+
 
 
 
@@ -121,16 +123,13 @@ async function carregarAvaliacoes(){
         data.length;
 
 
-
     let soma = 0;
 
 
 
     data.forEach(item=>{
 
-
-        soma += item.estrelas;
-
+        soma += Number(item.estrelas);
 
     });
 
@@ -145,15 +144,12 @@ async function carregarAvaliacoes(){
 
 
 
-
     const campoMedia =
         document.getElementById("average");
 
 
-
     const campoVotos =
         document.getElementById("votes");
-
 
 
 
@@ -175,7 +171,6 @@ async function carregarAvaliacoes(){
     }
 
 
-
 }
 
 
@@ -186,10 +181,6 @@ async function carregarAvaliacoes(){
 
 
 
-// ============================
-// INICIALIZAÇÃO
-// ============================
-
 document.addEventListener(
 "DOMContentLoaded",
 async()=>{
@@ -197,7 +188,6 @@ async()=>{
 
     const estrelas =
         document.querySelectorAll(".stars i");
-
 
 
     const rating =
@@ -215,18 +205,12 @@ async()=>{
     await criarUsuarioAnonimo();
 
 
-
     await carregarAvaliacoes();
 
 
 
 
 
-
-
-    // ============================
-    // CLIQUE NAS ESTRELAS
-    // ============================
 
 
     estrelas.forEach(estrela=>{
@@ -245,15 +229,14 @@ async()=>{
 
 
             console.log(
-                "Nota escolhida:",
+                "Nota clicada:",
                 nota
             );
 
 
 
 
-
-            // MENSAGEM
+            // mensagem
 
             const antiga =
                 document.getElementById(
@@ -267,7 +250,6 @@ async()=>{
                 antiga.remove();
 
             }
-
 
 
 
@@ -291,10 +273,8 @@ async()=>{
                 "15px";
 
 
-
             mensagem.style.color =
                 "#00ff88";
-
 
 
             mensagem.style.fontWeight =
@@ -308,12 +288,9 @@ async()=>{
 
 
 
-
             setTimeout(()=>{
 
-
                 mensagem.remove();
-
 
             },3000);
 
@@ -326,11 +303,36 @@ async()=>{
 
 
             // ============================
-            // SALVAR NO SUPABASE
+            // VERIFICA USUÁRIO
             // ============================
 
 
-            const { error } =
+            if(!usuario){
+
+
+                console.error(
+                    "Usuário não criado"
+                );
+
+
+                return;
+
+            }
+
+
+
+
+
+
+
+
+
+            // ============================
+            // SALVAR
+            // ============================
+
+
+            const { data, error } =
                 await banco
                 .from("avaliacoes")
                 .insert({
@@ -339,11 +341,15 @@ async()=>{
 
                     user_id: usuario.id
 
-                });
+                })
+                .select();
 
 
 
-
+            console.log(
+                "Resposta insert:",
+                data
+            );
 
 
 
@@ -362,15 +368,11 @@ async()=>{
 
 
 
-
-
             console.log(
-                "Avaliação salva!"
+                "Avaliação salva com sucesso!"
             );
 
 
-
-            // ATUALIZA CONTADOR
 
             await carregarAvaliacoes();
 
