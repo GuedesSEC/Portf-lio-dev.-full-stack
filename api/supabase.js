@@ -14,52 +14,66 @@ let usuario = null;
 
 
 
+
 // ============================
-// CRIAR / PEGAR USUÁRIO ANÔNIMO
+// LOGIN GOOGLE
 // ============================
 
-async function criarUsuarioAnonimo(){
+async function loginGoogle(){
 
 
-    const { data: sessao } =
-        await banco.auth.getSession();
+    const { error } =
+        await banco.auth.signInWithOAuth({
 
+            provider: "google",
 
+            options: {
 
-    if(sessao.data.session){
+                redirectTo:
+                "https://guedessec.github.io/Portf-lio-dev.-full-stack/"
 
+            }
 
-        usuario =
-            sessao.data.session.user;
-
-
-        console.log(
-            "Usuário existente:",
-            usuario.id
-        );
-
-
-        return;
-
-    }
-
-
-
-
-
-    const { data, error } =
-        await banco.auth.signInAnonymously();
+        });
 
 
 
     if(error){
 
-
         console.error(
-            "Erro ao criar usuário:",
+            "Erro login Google:",
             error.message
         );
 
+    }
+
+}
+
+
+
+
+
+
+
+
+// ============================
+// RECUPERAR USUÁRIO LOGADO
+// ============================
+
+async function recuperarUsuario(){
+
+
+    const { data, error } =
+        await banco.auth.getSession();
+
+
+
+    if(error){
+
+        console.error(
+            "Erro sessão:",
+            error.message
+        );
 
         return;
 
@@ -67,15 +81,40 @@ async function criarUsuarioAnonimo(){
 
 
 
-    usuario =
-        data.user;
+
+    if(data.session){
+
+
+        usuario =
+            data.session.user;
 
 
 
-    console.log(
-        "Novo usuário:",
-        usuario.id
-    );
+        console.log(
+            "Usuário logado:",
+            usuario.id
+        );
+
+
+
+        const botao =
+            document.getElementById(
+                "login-google"
+            );
+
+
+
+        if(botao){
+
+            botao.style.display =
+                "none";
+
+        }
+
+
+
+    }
+
 
 
 }
@@ -89,10 +128,11 @@ async function criarUsuarioAnonimo(){
 
 
 // ============================
-// BUSCAR AVALIAÇÕES
+// CARREGAR AVALIAÇÕES
 // ============================
 
 async function carregarAvaliacoes(){
+
 
 
     const { data, error } =
@@ -102,11 +142,12 @@ async function carregarAvaliacoes(){
 
 
 
+
     if(error){
 
 
         console.error(
-            "Erro ao buscar:",
+            "Erro carregando avaliações:",
             error.message
         );
 
@@ -114,6 +155,9 @@ async function carregarAvaliacoes(){
         return;
 
     }
+
+
+
 
 
 
@@ -126,13 +170,18 @@ async function carregarAvaliacoes(){
 
 
 
+
     data.forEach(item=>{
 
 
-        soma += Number(item.estrelas);
+        soma += Number(
+            item.estrelas
+        );
 
 
     });
+
+
 
 
 
@@ -145,31 +194,48 @@ async function carregarAvaliacoes(){
 
 
 
-    const campoMedia =
-        document.getElementById("average");
-
-
-    const campoVotos =
-        document.getElementById("votes");
 
 
 
+    const mediaHTML =
+        document.getElementById(
+            "average"
+        );
 
-    if(campoMedia){
 
-        campoMedia.textContent =
+    const votosHTML =
+        document.getElementById(
+            "votes"
+        );
+
+
+
+
+    if(mediaHTML){
+
+        mediaHTML.textContent =
             media;
 
     }
 
 
 
-    if(campoVotos){
 
-        campoVotos.textContent =
+    if(votosHTML){
+
+        votosHTML.textContent =
             total;
 
     }
+
+
+
+
+
+    console.log(
+        "Avaliações:",
+        data
+    );
 
 
 }
@@ -189,8 +255,11 @@ async function carregarAvaliacoes(){
 async function jaVotou(){
 
 
+
     if(!usuario)
         return false;
+
+
 
 
 
@@ -202,6 +271,10 @@ async function jaVotou(){
             "user_id",
             usuario.id
         );
+
+
+
+
 
 
 
@@ -220,7 +293,11 @@ async function jaVotou(){
 
 
 
+
+
+
     return data.length > 0;
+
 
 
 }
@@ -237,7 +314,8 @@ async function jaVotou(){
 // MOSTRAR MENSAGEM
 // ============================
 
-function mostrarMensagem(texto){
+function mostrarMensagem(texto, erro=false){
+
 
 
     const antiga =
@@ -252,6 +330,9 @@ function mostrarMensagem(texto){
         antiga.remove();
 
     }
+
+
+
 
 
 
@@ -271,13 +352,11 @@ function mostrarMensagem(texto){
 
 
 
+
+
+
     mensagem.style.marginTop =
         "15px";
-
-
-
-    mensagem.style.color =
-        "#00ff88";
 
 
 
@@ -286,9 +365,34 @@ function mostrarMensagem(texto){
 
 
 
-    document
-    .querySelector(".rating")
-    .appendChild(mensagem);
+    mensagem.style.color =
+        erro
+        ? "#ff4444"
+        : "#00ff88";
+
+
+
+
+
+
+
+    const rating =
+        document.querySelector(
+            ".rating"
+        );
+
+
+
+    if(rating){
+
+        rating.appendChild(
+            mensagem
+        );
+
+    }
+
+
+
 
 
 
@@ -302,7 +406,10 @@ function mostrarMensagem(texto){
     },3000);
 
 
+
 }
+
+
 
 
 
@@ -321,19 +428,44 @@ document.addEventListener(
 async()=>{
 
 
+
     const estrelas =
-        document.querySelectorAll(".stars i");
+        document.querySelectorAll(
+            ".stars i"
+        );
 
 
 
-    console.log(
-        "Estrelas:",
-        estrelas.length
-    );
+    const botaoGoogle =
+        document.getElementById(
+            "login-google"
+        );
 
 
 
-    await criarUsuarioAnonimo();
+
+
+
+
+    if(botaoGoogle){
+
+
+        botaoGoogle.addEventListener(
+            "click",
+            loginGoogle
+        );
+
+
+    }
+
+
+
+
+
+
+
+    await recuperarUsuario();
+
 
 
     await carregarAvaliacoes();
@@ -343,12 +475,42 @@ async()=>{
 
 
 
+
+
+
     estrelas.forEach(estrela=>{
+
 
 
         estrela.addEventListener(
         "click",
         async()=>{
+
+
+
+
+
+
+            // precisa estar logado
+
+            if(!usuario){
+
+
+
+                mostrarMensagem(
+                    "Entre com Google para avaliar 🚀",
+                    true
+                );
+
+
+                return;
+
+
+            }
+
+
+
+
 
 
 
@@ -359,19 +521,15 @@ async()=>{
 
 
 
-            console.log(
-                "Nota escolhida:",
-                nota
-            );
 
 
 
 
 
-
-            // VERIFICA DUPLICADO
+            // impede voto duplicado
 
             if(await jaVotou()){
+
 
 
                 mostrarMensagem(
@@ -379,7 +537,9 @@ async()=>{
                 );
 
 
+
                 return;
+
 
             }
 
@@ -389,7 +549,9 @@ async()=>{
 
 
 
-            // SALVAR
+
+
+            // salva no banco
 
             const { error } =
                 await banco
@@ -398,9 +560,14 @@ async()=>{
 
                     estrelas: nota,
 
-                    user_id: usuario.id
+                    user_id:
+                    usuario.id
 
                 });
+
+
+
+
 
 
 
@@ -409,13 +576,23 @@ async()=>{
             if(error){
 
 
+
                 console.error(
-                    "Erro ao salvar:",
+                    "Erro salvar:",
                     error.message
                 );
 
 
+
+                mostrarMensagem(
+                    "Erro ao enviar avaliação",
+                    true
+                );
+
+
+
                 return;
+
 
             }
 
@@ -424,7 +601,8 @@ async()=>{
 
 
 
-            // MOSTRA NA HORA
+
+            // resposta imediata
 
             mostrarMensagem(
                 "Obrigado pelo feedback! 🚀"
@@ -436,16 +614,32 @@ async()=>{
 
 
 
-            // BLOQUEIA ESTRELAS
+
+            // atualiza números
+
+            await carregarAvaliacoes();
+
+
+
+
+
+
+
+
+            // bloqueia estrelas
 
             estrelas.forEach(item=>{
+
 
                 item.style.pointerEvents =
                     "none";
 
 
+
                 item.style.opacity =
                     "0.5";
+
+
 
             });
 
@@ -455,17 +649,13 @@ async()=>{
 
 
 
-            // ATUALIZA CONTADOR
-
-            await carregarAvaliacoes();
-
-
-
-
         });
 
 
+
     });
+
+
 
 
 });

@@ -1010,110 +1010,302 @@ footer {
 /* =========================
    footer */
    .rating {
+
     margin: 50px auto;
+
     padding: 30px;
 
     max-width: 400px;
 
+
     background: rgba(255, 252, 252, 0.05);
+
     backdrop-filter: blur(10px);
 
+
     border: 1px solid rgba(255, 255, 255, 0.15);
+
     border-radius: 20px;
+
 
     text-align: center;
 
-    color: #ffffff;
-    box-shadow: 
+
+    color: #000000;
+
+
+    box-shadow:
         0 0 20px rgba(0, 255, 170, 0.15);
+
+
     transition: 0.3s ease;
+
 }
+
 
 
 
 
 .rating h3 {
+
     font-size: 22px;
 
     margin-bottom: 20px;
 
+
     font-family: "Orbitron", sans-serif;
+
 
     color: #00ffaa;
 
+
     text-transform: uppercase;
+
 }
 
 
-/* Estrelas */
 
-.stars {
+
+
+
+/* BOTÃO LOGIN GOOGLE */
+
+#login-google {
+
     display: flex;
+
+    align-items: center;
 
     justify-content: center;
 
+    gap: 10px;
+
+
+    margin: 20px auto;
+
+
+    padding: 13px 22px;
+
+
+    width: 100%;
+
+    max-width: 280px;
+
+
+    background: rgb(255, 255, 255);
+
+
+    backdrop-filter: blur(10px);
+
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+
+    border-radius: 14px;
+
+
+    color: rgb(0, 0, 0);
+
+
+    font-family: "Rajdhani", sans-serif;
+
+
+    font-size: 16px;
+
+
+    font-weight: bold;
+
+
+    cursor: pointer;
+
+
+    transition: .3s ease;
+
+}
+
+
+
+#login-google i {
+
+    font-size: 18px;
+
+}
+
+
+
+
+
+/* ESTRELAS */
+
+.stars {
+
+    display: flex;
+
+
+    justify-content: center;
+
+
+    align-items: center;
+
+
     gap: 12px;
 
+
     margin: 20px 0;
+
 }
+
+
+
 
 
 .stars i {
 
     font-size: 35px;
 
+
     color: #555;
+
 
     cursor: pointer;
 
-    transition: 
+
+    transition:
         transform 0.2s ease,
         color 0.2s ease,
         text-shadow 0.2s ease;
+
 }
+
+
+
 
 
 .stars i:hover {
 
+
     transform: scale(1.2);
+
 
     color: #ffd700;
 
+
     text-shadow:
+
         0 0 10px #ffd700;
+
 }
 
 
-/* Estrelas selecionadas pelo JS */
+
+
+
 
 .stars i.active {
 
+
     color: #ffd900;
 
+
     text-shadow:
+
         0 0 15px #ffd900;
+
 }
 
 
-/* Texto das avaliações */
+
+
+
+
+
+/* TEXTO DAS AVALIAÇÕES */
 
 .rating p {
 
+
     margin-top: 15px;
+
 
     font-size: 18px;
 
+
     color: #cccccc;
 
+
     font-family: "Rajdhani", sans-serif;
+
+}
+
+
+
+
+#average {
+
+
+    color: #00ffaa;
+
+
+    font-weight: bold;
+
 }
 
 
 
 #votes {
 
+
     color: #ffffff;
 
+
     font-weight: bold;
+
 }
- 
+
+
+
+
+
+
+
+/* MENSAGEM DE FEEDBACK */
+
+#feedback-toast {
+
+
+    margin-top: 15px;
+
+
+    color: #00ff88;
+
+
+    font-weight: bold;
+
+
+    animation: aparecer .3s ease;
+
+}
+
+
+
+@keyframes aparecer {
+
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(-10px);
+
+    }
+
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
