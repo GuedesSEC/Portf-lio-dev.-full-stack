@@ -238,9 +238,11 @@ nav a:hover {
 ========================= */
 .about-grid {
     display: flex;
-    justify-content: space-between;
-    gap: 50px;
+    justify-content: center; 
+    align-items: center;     
+    gap: 60px;             
     flex-wrap: wrap;
+    padding-top: 100px;
 }
 
 .about .profile {
@@ -261,7 +263,6 @@ nav a:hover {
 .terminal {
     background: #0d1117;
     border: 1px solid #222;
-    border-radius: 12px;
     width: 600px;
     max-width: 100%;
 }
@@ -364,22 +365,22 @@ nav a:hover {
 }
 
 /* HTML */
-.tech-item:nth-child(1):hover i {
+.tech-item:nth-child(1) i {
     color: #E34F26;
 }
 
 /* CSS */
-.tech-item:nth-child(2):hover i {
+.tech-item:nth-child(2) i {
     color: #1572B6;
 }
 
 /* JavaScript */
-.tech-item:nth-child(3):hover i {
+.tech-item:nth-child(3) i {
     color: #F7DF1E;
 }
 
 /* Python */
-.tech-item:nth-child(4):hover i {
+.tech-item:nth-child(4) i {
     background: linear-gradient(to bottom, #3776AB 50%, #FFD43B 50%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -387,32 +388,32 @@ nav a:hover {
 }
 
 /* Node.js */
-.tech-item:nth-child(5):hover i {
+.tech-item:nth-child(5) i {
     color: #5FA04E;
 }
 
 /* React */
-.tech-item:nth-child(6):hover i {
+.tech-item:nth-child(6) i {
     color: #61DAFB;
 }
 
 /* GitHub */
-.tech-item:nth-child(7):hover i {
+.tech-item:nth-child(7) i {
     color: #ffffff;
 }
 
 /* Git */
-.tech-item:nth-child(8):hover i {
+.tech-item:nth-child(8) i {
     color: #F05032;
 }
 
 /* Linux */
-.tech-item:nth-child(9):hover i {
+.tech-item:nth-child(9) i {
     color: #000000;
 }
 
 /* Java */
-.tech-item:nth-child(10):hover i {
+.tech-item:nth-child(10) i {
  background: linear-gradient(to bottom, #3776AB 50%, #ff0000 50%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -425,7 +426,6 @@ nav a:hover {
 }
 
 .tech-item:hover i {
-    color: #000000;
     transform: scale(1.2);
 }
 
@@ -484,22 +484,17 @@ nav a:hover {
 }
 
 .card:hover {
-    box-shadow: 0 24px 60px rgb(31, 30, 30)
+    box-shadow: 0 24px 60px rgb(71, 73, 75)
 }
 
 .card{
     width: 380px;
     height: 620px;
-
     background: rgba(15,15,15,.85);
     backdrop-filter: blur(18px);
-
-    border:1px solid rgba(30, 32, 131, 0.596);
     border-radius:20px;
-
     overflow:hidden;
     padding:20px;
-
     display:flex;
     flex-direction:column;
 }
@@ -582,7 +577,7 @@ nav a:hover {
 
 .project-links span:hover{
 
-    border-color:#00ff66;
+    border-color:#bfbfe2;
 
     background:#292929;
 
@@ -592,7 +587,7 @@ nav a:hover {
 
 .project-links i{
 
-    color:#00ff66;
+    color:#ffffff;
 
     font-size:1rem;
 
@@ -835,37 +830,7 @@ footer {
     margin-top: 50px;
     color: #888;
 }
-/* =========================
-   RESPONSIVO
-========================= */
-@media (max-width: 768px) {
 
-    .nav-links {
-        display: none;
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
-    .title {
-        font-size: 32px;
-    }
-
-    .about-grid {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .terminal {
-        width: 100%;
-    }
-
-    .card {
-        width: 90%;
-        height: auto;
-    }
-    /* From Uiverse.io by vinodjangid07 */ 
 .tooltip-container {
   position: relative;
   cursor: pointer;
@@ -887,13 +852,6 @@ footer {
   box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
     inset -5px -5px 15px rgba(255, 255, 255, 0.1),
     5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
-}
-
-.profile {
-  background: #2a2b2f;
-  border-radius: 10px 15px;
-  padding: 10px;
-  border: 1px solid #52382f;
 }
 
 .tooltip-container:hover .tooltip,
@@ -1027,4 +985,3 @@ footer {
   padding-top: 5px;
 }
  
-}

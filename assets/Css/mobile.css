@@ -1,98 +1,95 @@
-/* =========================
-   MOBILE
-========================= */
 
+.menu-btn {
+    display: none;
+    justify-content: center;
+    align-items: center;
 
-.menu-btn{
-    display:none;
-    justify-content:center;
-    align-items:center;
+    width: 46px;
+    height: 46px;
 
-    width:46px;
-    height:46px;
+    background: rgba(255, 255, 255, .05);
+    backdrop-filter: blur(12px);
 
-    background:rgba(255,255,255,.05);
-    backdrop-filter:blur(12px);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 14px;
 
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:14px;
+    color: #fff;
+    font-size: 20px;
 
-    color:#fff;
-    font-size:20px;
-
-    cursor:pointer;
-    transition:.3s;
+    cursor: pointer;
+    transition: .3s;
 }
 
-.menu-btn:hover{
-    color:#00ff88;
-    border-color:#00ff88;
-    box-shadow:0 0 18px rgba(0,255,136,.35);
-    transform:scale(1.05);
+.menu-btn:hover {
+    color: #00ff88;
+    border-color: #00ff88;
+    box-shadow: 0 0 18px rgba(0, 255, 136, .35);
+    transform: scale(1.05);
 }
 
-.menu-btn:active{
-    transform:scale(.95);
+.menu-btn:active {
+    transform: scale(.95);
 }
 
-@media (max-width:768px){
+@media (max-width:768px) {
 
-    .menu-btn{
-        display:flex;
+    .menu-btn {
+        display: flex;
     }
 
-    .nav-links{
-        display:none;
-        flex-direction:column;
+    .nav-links {
+        display: none;
+        flex-direction: column;
 
-        position:absolute;
-        top:75px;
-        right:15px;
+        position: absolute;
+        top: 75px;
+        right: 15px;
 
-        width:140px;
+        width: 140px;
 
-        padding:10px;
+        padding: 10px;
 
-        background:rgba(12, 12, 12, 0.74);
-        backdrop-filter:blur(18px);
+        background: rgba(12, 12, 12, 0.74);
+        backdrop-filter: blur(18px);
 
-        border:1px solid rgba(250, 250, 250, 0.18);
-        border-radius:18px;
+        border: 1px solid rgba(250, 250, 250, 0.18);
+        border-radius: 18px;
 
         box-shadow:
-            0 15px 35px rgba(0,0,0,.55),
-            0 0 20px rgba(0,255,136,.12);
+            0 15px 35px rgba(0, 0, 0, .55),
+            0 0 20px rgba(0, 255, 136, .12);
 
-        animation:menuOpen .25s ease;
+        animation: menuOpen .25s ease;
     }
 
-    .nav-links.active{
-        display:flex;
+    .nav-links.active {
+        display: flex;
     }
 
-    .nav-links li{
-        list-style:none;
+    .nav-links li {
+        list-style: none;
     }
 
-    .nav-links a{
-        display:flex;
-        align-items:center;
+    .nav-links a {
+        display: flex;
+        align-items: center;
 
-        padding:14px 16px;
+        padding: 14px 16px;
 
-        color:#fff;
-        border-radius:12px;
+        color: #fff;
+        border-radius: 12px;
 
-        transition:.25s;
+        transition: .25s;
     }
 
-    .nav-links a:hover{
-        background:rgba(9, 163, 224, 0.12);
-        color:#ffffff;
-        padding-left:22px;
+    .nav-links a:hover {
+        background: rgba(9, 163, 224, 0.12);
+        color: #ffffff;
+        padding-left: 22px;
     }
 
 }
+
 @media (max-width: 768px) {
 
     .section {
@@ -132,65 +129,74 @@
         align-items: stretch;
     }
 
+    /* =========================
+       TERMINAL
+    ========================= */
+
     .terminal {
         width: 100%;
         max-width: 380px;
         margin: 0 auto;
         padding: 16px;
         border-radius: 18px;
-        border: 1px solid rgba(255,255,255,.08);
-        background: rgba(15,15,19,.95);
+        border: 1px solid rgba(255, 255, 255, .08);
+        background: rgba(15, 15, 19, .95);
+        text-align: left;
     }
 
     .terminal-top {
-        flex-wrap: wrap;
-        gap: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .terminal-title {
-        margin-left: auto;
-    }
-
-    .terminal-body {
-        padding: 22px;
-        color: #fff;
-    }
-
-    .terminal-body>div {
-        margin-bottom: 22px;
+        color: #9ca3af; /* Cor do "Sobre Mim" */
+        font-size: 16px;
     }
 
     .label {
         display: block;
-        color: #38bdf8;
+        color: #38bdf8; /* Cor dos títulos </> */
         font-size: 15px;
         font-weight: 700;
         margin-bottom: 8px;
         text-align: left;
     }
 
-    .value,
-    .Habilidades,
-    .categoria,
-    .skill li,
-    .cursor {
+    .value {
+        color: #ff3b3b; /* Cor do texto principal */
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    .value span {
+        color: #00ff88; /* Cor do texto entre () */
+    }
+
+    .Habilidades {
         text-align: left;
     }
 
     .Habilidades p {
-        padding: 12px 15px;
-        border-radius: 10px;
+        color: #fdba00; /* Cor das habilidades */
+        margin: 8px 0;
+        padding: 0;
+        font-size: 15px;
+        line-height: 1.6;
     }
 
-    .skill ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    .cursor {
+        color: #ffffff;
     }
+
+    /* =========================
+       FOTO
+    ========================= */
 
     .about .profile {
-        padding: 0;
-        background: transparent;
+        padding: 10px;
         max-width: 360px;
         margin: 0 auto;
     }
@@ -203,6 +209,10 @@
         margin: 0 auto;
         border-radius: 20px;
     }
+
+    /* =========================
+       TECNOLOGIAS
+    ========================= */
 
     .tech-frameworks--ecnologias {
         font-size: 16px;
@@ -217,10 +227,16 @@
         font-size: 56px;
     }
 
-    /* =========================
-       CARROSSEL
-    ========================= */
 
+
+    /* =========================
+       CARROSSEL MOBILE
+    ========================= */
+    #projects h2 {
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
     .carousel {
         width: 100%;
         height: 470px;
@@ -238,36 +254,69 @@
         user-select: none;
         perspective: 1000px;
     }
+    .fa-brands fa-github {
+        color: #000000;
+    }
+    .project-links{
+        display:flex;
+        font-size:12px;
+        justify-content:center;
+        gap:10px;
+    }
+
+    .project-links span{
+        flex:1;
+        font-size:10px;
+        padding:10px;
+        white-space:nowrap;
+    }
 
     .card {
         position: absolute;
         top: 50%;
         left: 50%;
-        width: min(70vw, 230px);
+        transform: translate(-50%, -50%);
+        width: min(80vw, 240px);
         height: 360px;
         padding: 12px;
         border-radius: 18px;
         background: #0e0d0d;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
-        transition: .4s ease;
         overflow: hidden;
+        transition: transform .4s ease, opacity .4s ease;
     }
 
     .card img {
         width: 100%;
-        height: 220px;
+        height: 140px;
         object-fit: cover;
         border-radius: 12px;
     }
 
     .card h3 {
         margin-top: 12px;
-        font-size: 22px;
+        font-size: 20px;
+        line-height: 1.3;
     }
 
     .card p {
         margin-top: 8px;
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+
+    /* =========================
+       CONTATO MOBILE
+    ========================= */
+
+    #contact h2 {
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 150px;
     }
 
     .card.active {
@@ -277,17 +326,13 @@
     }
 
     .card.next {
-        transform: translate(calc(-50% + 145px), -50%)
-            scale(.78)
-            rotateY(-28deg);
+        transform: translate(calc(-50% + 145px), -50%) scale(.78) rotateY(-28deg);
         opacity: .55;
         z-index: 4;
     }
 
     .card.prev {
-        transform: translate(calc(-50% - 145px), -50%)
-            scale(.78)
-            rotateY(28deg);
+        transform: translate(calc(-50% - 145px), -50%) scale(.78) rotateY(28deg);
         opacity: .55;
         z-index: 4;
     }
@@ -314,5 +359,10 @@
     .socials a {
         width: 46px;
         height: 46px;
+    }
+     #contact h2 {
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 150px;
     }
 }
