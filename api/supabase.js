@@ -5,7 +5,9 @@ const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.addEventListener("DOMContentLoaded", () => {
     const estrelas = document.querySelectorAll(".stars i");
+    const containerRating = document.querySelector(".rating"); // Seleciona o card principal
     let mediaAtual = 0;
+    let mensagemTimeout; // Controla o tempo da mensagem na tela
 
     // Função para puxar as notas da nuvem
     async function carregarAvaliacoes() {
@@ -43,6 +45,35 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // FUNÇÃO PARA MOSTRAR O AGRADECIMENTO NA TELA
+    function mostrarAgradecimento(texto, erro = false) {
+        // Se já tiver uma mensagem na tela, remove ela antes de criar outra
+        const mensagemAntiga = document.getElementById("feedback-toast");
+        if (mensagemAntiga) mensagemAntiga.remove();
+        clearTimeout(mensagemTimeout);
+
+        // Cria o elemento de parágrafo para a mensagem
+        const p = document.createElement("p");
+        p.id = "feedback-toast";
+        p.textContent = texto;
+        
+        // Estilização dinâmica para combinar com seu vidro/neon
+        p.style.marginTop = "15px";
+        p.style.fontSize = "14px";
+        p.style.fontWeight = "bold";
+        p.style.transition = "all 0.3s ease";
+        p.style.color = erro ? "#ff4a4a" : "#00ff88"; // Vermelho se der erro, Verde Neon se der certo
+
+        // Adiciona o texto no final do bloco de avaliação
+        containerRating.appendChild(p);
+
+        // Remove a mensagem da tela após 3 segundos
+        mensagemTimeout = setTimeout(() => {
+            p.style.opacity = "0";
+            setTimeout(() => p.remove(), 300); // Espera o efeito de sumir terminar
+        }, 3000);
+    }
+
     // Inicializa o contador ao abrir a página
     carregarAvaliacoes();
 
@@ -72,21 +103,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (error) {
                 console.error("Erro detalhado do Supabase:", error.message);
-                alert("O banco recusou o voto. Verifique se o RLS está desativado!");
-                carregarAvaliacoes(); // Desfaz a pintura visual voltando ao real
+                mostrarAgradecimento("Erro ao enviar. Verifique o RLS!", true);
+                carregarAvaliacoes(); 
                 return;
             }
 
-            alert("Avaliação enviada com sucesso! 🚀");
+            // EXIBE A MENSAGEM DO SEU FEEDBACK DIRETO NA TELA!
+            mostrarAgradecimento("Obrigado pelo seu feedback! 🚀");
             carregarAvaliacoes(); // Atualiza os números na tela
         });
     });
 
-    // ESCUTA EM TEMPO REAL (Se outra pessoa votar em outro PC, atualiza a sua tela na hora)
+    // ESCUTA EM TEMPO REAL
     supabase
       .channel('mudancas-avaliacoes')
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'avaliacoes' }, () => {
           carregarAvaliacoes();
       })
       .subscribe();
-}); // Fechamento correto do DOMContentLoaded
+});
