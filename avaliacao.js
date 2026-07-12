@@ -34,6 +34,111 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+    // ============================
+    // CARREGAR MÉDIA E AVALIAÇÕES
+    // ============================
+
+    async function carregarAvaliacoes() {
+
+
+        if (!banco) return;
+
+
+
+        const { data, error } = await banco
+            .from("avaliacoes")
+            .select("estrelas");
+
+
+
+        if (error) {
+
+            console.error(
+                "Erro ao buscar avaliações:",
+                error.message
+            );
+
+            return;
+
+        }
+
+
+
+        console.log(
+            "Avaliações recebidas:",
+            data
+        );
+
+
+
+        const total = data.length;
+
+
+        let soma = 0;
+
+
+
+        data.forEach((item) => {
+
+            soma += item.estrelas;
+
+        });
+
+
+
+        const media = total > 0
+            ? (soma / total).toFixed(1)
+            : "0.0";
+
+
+
+        const campoMedia =
+            document.getElementById("average");
+
+
+        const campoVotos =
+            document.getElementById("votes");
+
+
+
+        if (campoMedia) {
+
+            campoMedia.textContent = media;
+
+        }
+
+
+
+        if (campoVotos) {
+
+            campoVotos.textContent = total;
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+    // Carrega ao abrir o site
+    carregarAvaliacoes();
+
+
+
+
+
+
+
+    // ============================
+    // CLIQUE NAS ESTRELAS
+    // ============================
+
     estrelas.forEach((estrela) => {
 
 
@@ -45,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
+
             console.log(
                 "Nota clicada:",
                 nota
@@ -52,16 +158,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-            // mensagem visual
+
+            // mensagem
+
             const mensagemAntiga =
                 document.getElementById(
                     "feedback-toast"
                 );
 
 
-            if(mensagemAntiga){
+            if (mensagemAntiga) {
+
                 mensagemAntiga.remove();
+
             }
+
 
 
 
@@ -69,8 +180,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.createElement("p");
 
 
+
             mensagem.id =
                 "feedback-toast";
+
 
 
             mensagem.textContent =
@@ -81,8 +194,10 @@ document.addEventListener("DOMContentLoaded", () => {
             mensagem.style.marginTop =
                 "15px";
 
+
             mensagem.style.color =
                 "#00ff88";
+
 
             mensagem.style.fontWeight =
                 "bold";
@@ -100,7 +215,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 mensagem.remove();
 
-            },3000);
+            }, 3000);
+
 
 
 
@@ -108,30 +224,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // SALVAR NO SUPABASE
 
-            if(banco){
+            if (banco) {
+
 
 
                 const { error } =
                     await banco
-                    .from("avaliacoes")
-                    .insert({
-                        estrelas: nota
-                    });
+                        .from("avaliacoes")
+                        .insert({
+                            estrelas: nota,
+                            user_id: usuario.id
+                        })
 
 
 
-                if(error){
+
+
+                if (error) {
+
 
                     console.error(
                         "Erro ao salvar:",
                         error.message
                     );
 
-                }else{
+
+
+                } else {
+
 
                     console.log(
                         "Avaliação salva!"
                     );
+
+
+                    // atualiza números
+                    carregarAvaliacoes();
+
 
                 }
 
@@ -144,6 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     });
+
 
 
 });
