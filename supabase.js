@@ -3,7 +3,13 @@ const SUPABASE_KEY = "sb_publishable_mSk3yM7TrroFoCx6AC_oVg_6awgO7Jh";
 
 
 let banco = null;
+let usuario = null;
 
+
+
+// ============================
+// CONEXÃO SUPABASE
+// ============================
 
 if (window.supabase) {
 
@@ -23,41 +29,106 @@ if (window.supabase) {
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
+
+// ============================
+// CRIAR USUÁRIO ANÔNIMO
+// ============================
+
+async function criarUsuarioAnonimo(){
+
+
+    if(!banco) return;
+
+
+
+    const { data, error } =
+        await banco.auth.signInAnonymously();
+
+
+
+    if(error){
+
+        console.error(
+            "Erro ao criar usuário:",
+            error.message
+        );
+
+        return;
+
+    }
+
+
+
+    usuario = data.user;
+
+
+
+    console.log(
+        "Usuário criado:",
+        usuario.id
+    );
+
+
+}
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+
 
 
     const estrelas = document.querySelectorAll(".stars i");
     const rating = document.querySelector(".rating");
 
 
-    console.log("Estrelas:", estrelas.length);
+
+    console.log(
+        "Estrelas:",
+        estrelas.length
+    );
+
+
+
+    // cria usuário
+    await criarUsuarioAnonimo();
+
+
+
 
 
 
 
     // ============================
-    // CARREGAR MÉDIA E AVALIAÇÕES
+    // CARREGAR AVALIAÇÕES
     // ============================
 
-    async function carregarAvaliacoes() {
+    async function carregarAvaliacoes(){
 
 
-        if (!banco) return;
+        if(!banco)
+            return;
 
 
 
-        const { data, error } = await banco
+        const { data, error } =
+            await banco
             .from("avaliacoes")
             .select("estrelas");
 
 
 
-        if (error) {
+        if(error){
+
 
             console.error(
                 "Erro ao buscar avaliações:",
                 error.message
             );
+
 
             return;
 
@@ -65,21 +136,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
         console.log(
-            "Avaliações recebidas:",
+            "Avaliações:",
             data
         );
 
 
 
-        const total = data.length;
+
+        const total =
+            data.length;
+
 
 
         let soma = 0;
 
 
 
-        data.forEach((item) => {
+        data.forEach((item)=>{
 
             soma += item.estrelas;
 
@@ -87,9 +162,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-        const media = total > 0
+
+
+        const media =
+            total > 0
             ? (soma / total).toFixed(1)
             : "0.0";
+
+
 
 
 
@@ -102,17 +182,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-        if (campoMedia) {
 
-            campoMedia.textContent = media;
+        if(campoMedia){
+
+            campoMedia.textContent =
+                media;
 
         }
 
 
 
-        if (campoVotos) {
+        if(campoVotos){
 
-            campoVotos.textContent = total;
+            campoVotos.textContent =
+                total;
 
         }
 
@@ -125,9 +208,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-    // Carrega ao abrir o site
+    // carregar ao abrir
     carregarAvaliacoes();
+
 
 
 
@@ -139,15 +222,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // CLIQUE NAS ESTRELAS
     // ============================
 
-    estrelas.forEach((estrela) => {
+
+    estrelas.forEach((estrela)=>{
 
 
-        estrela.addEventListener("click", async () => {
+
+        estrela.addEventListener(
+            "click",
+            async ()=>{
 
 
-            const nota = Number(
-                estrela.dataset.rating
-            );
+
+            const nota =
+                Number(
+                    estrela.dataset.rating
+                );
 
 
 
@@ -159,17 +248,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
             // mensagem
 
-            const mensagemAntiga =
+            const antiga =
                 document.getElementById(
                     "feedback-toast"
                 );
 
 
-            if (mensagemAntiga) {
 
-                mensagemAntiga.remove();
+            if(antiga){
+
+                antiga.remove();
 
             }
 
@@ -211,36 +303,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-            setTimeout(() => {
+
+            setTimeout(()=>{
 
                 mensagem.remove();
 
-            }, 3000);
+            },3000);
 
 
 
 
 
 
+
+
+
+            // ============================
             // SALVAR NO SUPABASE
+            // ============================
 
-            if (banco) {
+
+            if(
+                banco &&
+                usuario
+            ){
 
 
 
                 const { error } =
                     await banco
-                        .from("avaliacoes")
-                        .insert({
-                            estrelas: nota,
-                            user_id: usuario.id
-                        })
+                    .from("avaliacoes")
+                    .insert({
+
+                        estrelas: nota,
+
+                        user_id: usuario.id
+
+                    });
 
 
 
 
 
-                if (error) {
+
+                if(error){
 
 
                     console.error(
@@ -250,7 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-                } else {
+                }else{
 
 
                     console.log(
@@ -258,18 +364,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
 
-                    // atualiza números
+
                     carregarAvaliacoes();
 
 
                 }
 
 
+
             }
 
 
 
+
         });
+
 
 
     });
