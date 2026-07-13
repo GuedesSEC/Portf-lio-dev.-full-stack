@@ -587,8 +587,8 @@ nav a:hover {
 .project-tech{
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-top: -30px;      /* sobe */
+    gap: 30px;
+    margin-top: -20px;      /* sobe */
     margin-bottom: 20px;   /* espaço antes dos botões */
 }
 
@@ -610,7 +610,7 @@ nav a:hover {
 .project-tech .fa-js{
     color:#F7DF1E;
 }
-.project-tech .fa-python{
+.project-tech .fa-react{
     color:#3776ab;
 }
 
